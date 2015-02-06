@@ -1,0 +1,6 @@
+<VirtualHost *:80>
+        DocumentRoot /var/www/sea-kg.com
+        ServerName sea-kg.com
+        ErrorLog /var/log/apache2/sea-kg-com-error_log
+        CustomLog /var/log/apache2/sea-kg-com-access_log common
+</VirtualHost>
