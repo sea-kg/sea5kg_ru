@@ -96,14 +96,25 @@ function distance(x1,y1,x2,y2) {
 
 function printFront() {
 	var canvas = document.getElementById('pictFront');
+	var canvas2 = document.getElementById('pictBack');
 	var ctx = canvas.getContext("2d");
+	var ctx2 = canvas2.getContext("2d");
 	ctx.font = "14px Arial";
 	ctx.fillStyle = "#FFF";
 	ctx.strokeStyle = "#000";
 	
 	ctx.fillRect  (0, 0, canvas.width, canvas.height);
 	ctx.strokeRect(0, 0, canvas.width, canvas.height);
+
+	ctx2.font = ctx.font;
+	ctx2.fillStyle = ctx.fillStyle;
+	ctx2.strokeStyle = ctx.strokeStyle;
+	
+	ctx2.fillRect  (0, 0, canvas2.width, canvas2.height);
+	ctx2.strokeRect(0, 0, canvas2.width, canvas2.height);
+	
 	ctx.fillStyle = "#000";
+	ctx2.fillStyle = "#000";
 	
 	var baseW = proportion * parseInt(this.baseW.value,10);
 	var baseB = proportion * parseInt(this.baseB.value,10);
@@ -120,6 +131,10 @@ function printFront() {
 	ctx.strokeRect(w/2 - baseW/2, h - 2*baseB - padd, baseW, baseB);
 	ctx.strokeRect(w/2 - baseW/2, h - baseB - padd, baseD, baseB);
 	ctx.strokeRect(w/2 + baseW/2 - baseD, h - baseB - padd, baseD, baseB);
+	
+	ctx2.strokeRect(w/2 - baseW/2, h - 2*baseB - padd, baseW, baseB);
+	ctx2.strokeRect(w/2 - baseW/2, h - baseB - padd, baseD, baseB);
+	ctx2.strokeRect(w/2 + baseW/2 - baseD, h - baseB - padd, baseD, baseB);
 
 	var np1 = (baseW - doorW)/2;
 	var dk1 = doorH + 2*baseB;
@@ -132,14 +147,22 @@ function printFront() {
 	var pv1_a2 = ps1 + doorW/2;
 	var pv1_b2 = (pv1_b1*pv1_a2)/pv1_a1;
 	var pv1 = Math.pow(pv1_a2*pv1_a2 + pv1_b2*pv1_b2, 0.5);
+	var zs1 = 2*pk1_a + 2*np1 + 2*baseB + doorW;
 	
 	ctx.fillText(np1/proportion + ' см', w/2 - baseW/2 - 3*padd, h - 2*baseB - padd);
+	ctx2.fillText(baseW/proportion + ' см', w/2 - baseW/2 + padd, h - 4*baseB - padd);
 	ctx.fillText(dk1/proportion + ' см', w/2 - baseW/2 + np1 + baseB, h - 2*baseB - padd - 2*(dk1/3));
-	ctx.fillText(dk2/proportion + ' см', w/2, h + baseB - padd - dk1);	
+	ctx2.fillText(dk1/proportion + ' см', w/2 - baseW/2 + np1 + baseB, h - 2*baseB - padd - 2*(dk1/3));
+	ctx.fillText(dk2/proportion + ' см', w/2, h + baseB - padd - dk1);
+	ctx2.fillText(dk2/proportion + ' см', w/2 + padd, h + baseB - padd - dk1);
 	ctx.fillText(pk1/proportion + ' см', w/2 - baseW/2 - 5*padd, h - 5*baseB  - isgiH/2 - padd);
+	ctx2.fillText(pk1/proportion + ' см', w/2 - baseW/2 - 5*padd, h - 5*baseB  - isgiH/2 - padd);
 	ctx.fillText((ps1/proportion).toFixed(2) + ' см', w/2 - doorW/2 - padd - ps1/2, h - padd - isgiH - padd);
 	ctx.fillText((pv1/proportion).toFixed(2) + ' см', w/2 - doorW - padd - ps1/2, h - dk1 - padd);
+	ctx2.fillText((pv1/proportion).toFixed(2) + ' см', w/2 - doorW - padd - ps1/2, h - dk1 - padd);
+	ctx2.fillText((zs1/proportion).toFixed(2) + ' см', w/2 - doorW/2 - padd - ps1/2, h - padd - isgiH - padd);
 	ctx.fillStyle = "#EEE";
+	ctx2.fillStyle = "#EEE";
 
 	// ps1 left
 	rect(ctx, w/2 - doorW/2 - ps1, h - 2*baseB - padd - isgiH, ps1, baseB);
@@ -147,6 +170,9 @@ function printFront() {
 	// ps1 right
 	rect(ctx, w/2 + doorW/2, h - 2*baseB - padd - isgiH, ps1, baseB);
 
+    // zs1
+	rect(ctx2, w/2 - doorW/2 - ps1, h - 2*baseB - padd - isgiH, zs1, baseB);
+	
 	// pk1 left
 	rect2(ctx,
 		w/2 - baseW/2, h - 2*baseB - padd,
@@ -155,14 +181,35 @@ function printFront() {
 		w/2 - baseW/2 + baseB, h - 2*baseB - padd);
 	
 	// alert("" + (distance(w/2 - baseW/2, h - 2*baseB - padd, w/2 - baseW/2 - pk1_a, h - 2*baseB - padd - isgiH)/proportion) + "cm");
-	
+
 	// pk1 right
 	rect2(ctx,
 		w/2 + baseW/2 - baseB, h - 2*baseB - padd,
 		w/2 + baseW/2 + pk1_a - baseB, h - 2*baseB - padd - isgiH,
 		w/2 + baseW/2 + pk1_a, h - 2*baseB - padd - isgiH,
 		w/2 + baseW/2, h - 2*baseB - padd);
+		
+	// zk1 left
+	rect2(ctx2,
+		w/2 - baseW/2, h - 2*baseB - padd,
+		w/2 - baseW/2 - pk1_a, h - 2*baseB - padd - isgiH,
+		w/2 - baseW/2 - pk1_a + baseB, h - 2*baseB - padd - isgiH,
+		w/2 - baseW/2 + baseB, h - 2*baseB - padd);
 
+	// zk1 right
+	rect2(ctx2,
+		w/2 + baseW/2 - baseB, h - 2*baseB - padd,
+		w/2 + baseW/2 + pk1_a - baseB, h - 2*baseB - padd - isgiH,
+		w/2 + baseW/2 + pk1_a, h - 2*baseB - padd - isgiH,
+		w/2 + baseW/2, h - 2*baseB - padd);
+
+	// zv1 left
+	rect2(ctx2,
+		w/2 - doorW/2 - ps1, h - 2*baseB - padd - isgiH,
+		w/2 - doorW/2 - ps1 + baseB, h - 2*baseB - padd - isgiH,
+		w/2, h - 2*baseB - padd - isgiH - pv1_b2,
+		w/2 - baseB, h - 2*baseB - padd - isgiH - pv1_b2);
+		
 	// pv1 left
 	rect2(ctx,
 		w/2 - doorW/2 - ps1, h - 2*baseB - padd - isgiH,
@@ -170,13 +217,27 @@ function printFront() {
 		w/2, h - 2*baseB - padd - isgiH - pv1_b2,
 		w/2 - baseB, h - 2*baseB - padd - isgiH - pv1_b2);
 
-	// pv1 left
+	// pv1 right
 	rect2(ctx,
 		w/2 + doorW/2 + ps1, h - 2*baseB - padd - isgiH,
 		w/2 + doorW/2 + ps1 - baseB, h - 2*baseB - padd - isgiH,
 		w/2, h - 2*baseB - padd - isgiH - pv1_b2,
 		w/2 + baseB, h - 2*baseB - padd - isgiH - pv1_b2);
 
+	// zv1 left
+	rect2(ctx2,
+		w/2 - doorW/2 - ps1, h - 2*baseB - padd - isgiH,
+		w/2 - doorW/2 - ps1 + baseB, h - 2*baseB - padd - isgiH,
+		w/2, h - 2*baseB - padd - isgiH - pv1_b2,
+		w/2 - baseB, h - 2*baseB - padd - isgiH - pv1_b2);
+
+	// zv1 right
+	rect2(ctx2,
+		w/2 + doorW/2 + ps1, h - 2*baseB - padd - isgiH,
+		w/2 + doorW/2 + ps1 - baseB, h - 2*baseB - padd - isgiH,
+		w/2, h - 2*baseB - padd - isgiH - pv1_b2,
+		w/2 + baseB, h - 2*baseB - padd - isgiH - pv1_b2);
+		
 	// alert("" + (distance(w/2 + doorW/2 + ps1 - baseB, h - 2*baseB - padd - isgiH, w/2, h - 2*baseB - padd - isgiH - pv1_b2)/proportion) + "cm");
 	
 	// np1 left
@@ -185,6 +246,12 @@ function printFront() {
 	// np1 right
 	rect(ctx, w/2 + baseW/2 - np1, h - 3*baseB - padd, np1, baseB);
 	
+	// nz1
+	rect(ctx2, w/2 - baseW/2, h - 3*baseB - padd, baseW, baseB);
+
+	// zz1
+	rect(ctx2, w/2 - baseB/2, h - 2*baseB - padd - dk1, baseB, dk1);
+
 	// dk1 left
 	rect(ctx, w/2 - baseW/2 + np1 - baseB, h - 2*baseB - padd - dk1, baseB, dk1);
 	
@@ -198,8 +265,8 @@ function printFront() {
 	crossed(ctx, w/2 + baseW/2 - np1, h - 3*baseB - padd, baseB);
 	
 	// dk2
-	ctx.strokeRect(w/2 - dk2/2, h - 2*baseB - padd - dk1, dk2, baseB);
-	ctx.fillRect  (w/2 - dk2/2, h - 2*baseB - padd - dk1, dk2, baseB);
+	rect(ctx, w/2 - dk2/2, h - 2*baseB - padd - dk1, dk2, baseB);
+	rect(ctx2, w/2 - dk2/2, h - 2*baseB - padd - dk1, dk2, baseB);
 	
 	// dk1 x dk2 left
 	crossed(ctx, w/2 - dk2/2 + (dk2/2 - doorW/2) - baseB, h - 2*baseB - padd - dk1, baseB);
@@ -212,45 +279,9 @@ function printFront() {
 	
 	// dk1 x ps1 right
 	crossed(ctx, w/2 + doorW/2, h - 2*baseB - padd - isgiH, baseB);
-
-	
-	// pk1_a
-	
-	// dk1
-	// ctx.fillRect  (padd, padd + baseHI - baseD, baseW, baseD);
-/*	var baseW = proportion * parseInt(this.baseW.value,10);
-	var baseH = proportion * parseInt(this.baseH.value,10);
-	var baseD = proportion * parseInt(this.baseD.value,10);*/
-}
-
-
-function printBack() {
-	var canvas = document.getElementById('pictBack');
-	var ctx = canvas.getContext("2d");
-	ctx.font = "14px Arial";
-	ctx.fillStyle = "#FFF";
-	ctx.strokeStyle = "#000";
-	
-	var w = canvas.width;
-	var h = canvas.height;
-	ctx.fillRect  (0, 0, w, h);
-	ctx.strokeRect(0, 0, canvas.width, canvas.height);
-	ctx.fillStyle = "#000";
-
-	var baseW = proportion * parseInt(this.baseW.value,10);
-	var baseB = proportion * parseInt(this.baseB.value,10);
-
-
-	ctx.strokeRect(0, 0, canvas.width, canvas.height);
-
-	
-/*	
-	var baseH = proportion * parseInt(this.baseH.value,10);
-	var baseD = proportion * parseInt(this.baseD.value,10);*/
 }
 
 function printPict() {
 	printBase();
 	printFront();
-	printBack();
 };
