@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resume>
+	<name>Evgenii Sopov</name>
+	<contacts>
+		<contact type="Skype" value="sea-kg"/>
+		<contact type="E-mail" value="mrseakg@gmail.com"/>
+	</contacts>
+	<skills>
+		<skill value="C++ (VCL, Qt, std)"/>
+		<skill value="PHP (without frameworks)"/>
+		<skill value="SQL (MySQL, Oracle, Firebird/Interbase, MS SQL, SQLite, MS Access)"/>
+		<skill value="XSLT (1.0, 2.0 : ms and saxon)"/>
+		<skill value="XML, JSON"/>
+		<skill value="gradle"/>
+		<skill value="groovy (creating DSL for project)"/>
+		<skill value="java (without frameworks)"/>
+		<skill value="javascript (web, and integration to c++ application for windows)"/>
+		<skill value="css"/>
+		<skill value="linux (debuan, ubuntu)"/>
+		<skill value="bash"/>
+		<skill value="git"/>
+		<skill value="python (scripting, network)"/>
+		<skill value="LaTeX (for make documentation)"/>
+		<skill value="C# (not so much)"/>	
+		<skill value="Obj-C (not so much)"/>
+	</skills>
+	<languages>
+		<language name="Русский" value="native"/>
+		<language name="English" value="speak, read technical documentation, write (use dictionary)"/>
+		<language name="Deutche" value="Level A1"/>
+	</languages>
+	<educations>
+		<education value="Specialist: Integrated security of information systems, TUSUR, 2011 / Специалист: Комплексное обеспечение информационной безопастности, ТУСУР, 2011 г.о."/>
+		<education value="Start Deutsch A1, 2013"/>
+	</educations>
+	<career>
+		<job rangedate="Sep 2011 — June 2015" company="startext" position="Software Engineer">
+Support code to develop new features, integration with other systems, team development
+Programming language: c ++ (WinAPI, VCL), groovy, java, javascript, xslt
+SQL: oracle, postgresql, sqllite, ms access, ms sql
+		</job>
+
+		<job rangedate="Sep 2011 — Jan 2015" company="TUSUR, keva" position="Trainer of CTF-team">
+Management of student projects
+develop: C++ (Qt), PHP, MySQL, JavaScript, Python, C#
+also: forensics, crypto
+		</job>
+		
+		<job rangedate="Aug 2011" company="СибСофт" position="Software Engineer">
+application development by iOS
+server-side development in PHP with a web editor data
+		</job>
+		
+		<job rangedate="2008-2011" company="nope" position="freelancer">
+do some student's job
+С++ VCL, C++ Qt, SQL
+		</job>
+	</career>
+	
+	<projects>
+		<project name="bezier-curve" langs="C++ (VCL, Builder)" technologies="OOP" sources="https://github.com/sea-kg/bezier-curve" video="">
+Calculate and draw bezier curve.
+		</project>
+	</projects>
+	
+</resume>
+
+
+

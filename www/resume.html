@@ -1,40 +1,107 @@
 <html>
   <head>
-		<title>Resume by Evgenii Sopov</title>
+		<title>Resume by</title>
 		<link href='css/base.css' rel='stylesheet' type='text/css'>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="Keywords" content="sea-kg, resume, Evgenii Sopov">
+		<script >
+			function afterLoad() {
+				xmlhttp=new XMLHttpRequest();
+				xmlhttp.open("GET","resume.xml",false);
+				xmlhttp.send();
+				xmlDoc=xmlhttp.responseXML;
+
+				// name
+				document.getElementById("title").innerHTML = "Resume by " + xmlDoc.getElementsByTagName("name")[0].firstChild.nodeValue;
 				
+				// contacts
+				{
+					var x = xmlDoc.getElementsByTagName('contact');
+					for ( i=0; i<x.length; i++)
+					{
+						document.getElementById("contacts").innerHTML += x[i].getAttribute('type') + ": " + x[i].getAttribute('value') + "<br/>";
+					}
+				}
+  
+				// skills
+				{
+					var x = xmlDoc.getElementsByTagName('skill');
+					for ( i=0; i<x.length; i++)
+					{
+						document.getElementById("skills").innerHTML += "<li>" + x[i].getAttribute('value') + "</li>";
+					}
+				}
+				
+				// languages
+				{
+					var x = xmlDoc.getElementsByTagName('language');
+					for ( i=0; i<x.length; i++)
+					{
+						document.getElementById("languages").innerHTML += "<li>" + x[i].getAttribute('name') + " - " + x[i].getAttribute('value') + "</li>";
+					}
+				}
+				
+				// educations
+				{
+					var x = xmlDoc.getElementsByTagName('education');
+					for ( i=0; i<x.length; i++)
+					{
+						document.getElementById("educations").innerHTML += "<li>" + x[i].getAttribute('value') + "</li>";
+					}
+				}
+				// job
+				{
+					var x = xmlDoc.getElementsByTagName('job');
+					for ( i=0; i<x.length; i++)
+					{
+						document.getElementById("career").innerHTML += "<li>" + x[i].getAttribute('rangedate') 
+							+ "<br/> Company: " + x[i].getAttribute('company')
+							+ "<br/> Position: " + x[i].getAttribute('position')
+							+ "<br/> <pre>" + x[i].firstChild.nodeValue + "</pre>"
+							+ "</li>";
+					}
+				}
+				
+				// projects
+				{
+					var x = xmlDoc.getElementsByTagName('project');
+					for ( i=0; i<x.length; i++)
+					{
+
+						var content = "";
+						var name = x[i].getAttribute('name');						
+						content += "<h3>" + name + "</h3>";
+						content += "Programming languages: " + x[i].getAttribute('langs') + "<br/>";
+						content += "Technologies: " + x[i].getAttribute('technologies') + "<br/>";
+						var sources = x[i].getAttribute('sources');
+						if (sources != "") {
+							sources = '<a href="' + sources + '">' + sources + '</a>';
+							content += "Sources: " + sources + "<br/>";
+						}
+						var video = x[i].getAttribute('video');
+						if (video != "") {
+							sources = '<a href="' + video + '">' + video + '</a>';
+							content += "Video: " + video + "<br/>";
+						}
+						content += "<pre>" + x[i].firstChild.nodeValue + "</pre>";
+						document.getElementById("projects").innerHTML += content; 
+					}
+				}
+			}
+		</script>
 	</head>
-	<body>
+	<body onload="afterLoad();">
 		<center>
-			<h1>Resume by Evgenii Sopov</h1><br>
+			<h1 id="title">Resume by ???</h1><br>
     </center>
     <table>
       <tr>
         <td></td>
         <td>
-Skype: sea-kg<br>
-E-mail: mrseakg@gmail.com<br>
+<div id="contacts"></div>
 <h2>Skills</h2>
-<ul>
-  <li>C++ (VCL, Qt, std)</li>
-  <li>PHP (without frameworks)</li>
-  <li>SQL (MySQL, Oracle, Firebird/Interbase, MS SQL, SQLite, MS Access)</li>
-  <li>XSLT (1.0, 2.0 : ms and saxon)</li>
-  <li>XML, JSON</li>
-  <li>gradle</li>
-  <li>groovy (creating DSL for project)</li>
-  <li>java (without frameworks)</li>
-  <li>javascript (web, or integration to c++ application for windows)</li>
-  <li>css</li>
-  <li>linux (debuan, ubuntu)</li>
-  <li>bash</li>
-  <li>git</li>
-  <li>python (scripting, network)</li>
-  <li>LaTeX (for make documentation)</li>
-  <li>C# (not so much)</li>
-  <li>Obj-C (not so much)</li>
+
+<ul id="skills">
 <ul>
 </td>
         <td></td>
@@ -43,10 +110,7 @@ E-mail: mrseakg@gmail.com<br>
         <td></td>
         <td>
 			<h2>Languages</h2>
-			<ul>
-				<li>Русский - native</li>
-				<li>English - (speak, read technical documentation, speak, read technical documentation, write (use dictionary))</li>
-				<li>Deutche - (Level A1)</li>
+			<ul id="languages">
 			</ul>
 		</td>
 	</tr>
@@ -54,9 +118,7 @@ E-mail: mrseakg@gmail.com<br>
         <td></td>
         <td>
 			<h2>Education</h2>
-			<ul>
-				<li>Specialist: Integrated security of information systems, TUSUR, 2011</li>
-				<li>Start Deutsch A1, 2013</li>
+			<ul id="educations">
 			</ul>
 		</td>
 	</tr>
@@ -64,25 +126,7 @@ E-mail: mrseakg@gmail.com<br>
         <td></td>
         <td>
 			<h2>Сareer</h2>
-			<ul>
-				<li>Sep 2011 — June 2015 - startext<br><i>
-				Position: Software Engineer<br>
-				Support code to develop new features, integration with other systems, team development<br>
-				Programming language: c ++ (WinAPI, VCL), groovy, java, javascript, xslt<br>
-				SQL: oracle, postgresql, sqllite, ms access, ms sql<br>
-				</i>
-				</li>
-				<li>Sep 2011 — Jan 2015 - TUSUR, keva<br><i>
-				Trainer for CTF-team<br>
-				Management of student projects<br>
-				develop: C++ (Qt), PHP, MySQL, JavaScript, Python, C#
-				also: forensics, crypto</i>
-				</li>
-				<li>Aug 2011 - СибСофт<br><i>
-				application development by iOS<br> server-side development in PHP with a web editor data.</i>
-				</li>
-				<li>2008-2011 - freelancer <br><i>do some student's job<br>
-					С++ VCL, C++ Qt, SQL</i> </li>
+			<ul id="career">
 			</ul>
 		</td>
 	</tr>
@@ -90,14 +134,9 @@ E-mail: mrseakg@gmail.com<br>
         <td></td>
         <td>
 <h2>Projects</h2>
-<h3>bezier-curve</h3>
-Programming languages: C++ (VCL, Builder)<br>
-Technologies: OOP<br>
-Description: calculate and show bezier curve. <br>
-Sources: <a href="https://github.com/sea-kg/bezier-curve">https://github.com/sea-kg/bezier-curve</a><br>
-<img width="200px" src="img/resume/bezier-curve.jpg">
- <br>
- <br>
+<div id="projects">
+	
+</div>
 </td>
 <td></td>
       </tr>
@@ -241,6 +280,7 @@ Sources: <a href="https://github.com/sea-kg/BottleFS">https://github.com/sea-kg/
 				<h3>The-Dragon-curve</h3>
 					Programming languages: C++ Builder 6<br/>
 					Technologies: Canvas<br/>
+					http://www.youtube.com/watch?v=7ozo-3s7g2I
 					Description: Drawing The Dragon curve<br/>
 					Sources: <a href="https://github.com/sea-kg/The-Dragon-curve">https://github.com/sea-kg/The-Dragon-curve</a><br/>
 					<br><br>
