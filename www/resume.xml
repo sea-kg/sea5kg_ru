@@ -4,6 +4,7 @@
 	<contacts>
 		<contact type="Skype" value="sea-kg"/>
 		<contact type="E-mail" value="mrseakg@gmail.com"/>
+		<contact type="Linkedin" value="https://www.linkedin.com/in/seakg"/>
 	</contacts>
 	<skills>
 		<skill value="C++ (VCL, Qt, std)"/>
