@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<title>Искусственный интелект</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="Keywords" content="ai, Artificial intelligence, sea-kg">
 	</head>
 	<body>
@@ -48,6 +49,7 @@ brute force (метод грубой силы) то есть путь полно
 То есть бинарная математика не такая сложная как высшая математика с интегралами и диффиренциалами.</li>
 	<li>возможность замещения одного уровнения на дргугое аналогичное но состоящие из других операций и других последовательностей. Стоп.
 	То есть можно попробовать "подобрать" бинарное уравнение очень похожее? Да именно теоритически это возможно!</li>
+</ul>
 <br>
 <br>
 <i><b>Эксперимент 1</b><br>
@@ -97,7 +99,7 @@ brute force (метод грубой силы) то есть путь полно
 	<li>должен использовать ограниченное количество памяти</li>
 	<li>при необходимости модифицировать себя (! это важно)</li>
 	<li>сама структура должна быть сериализуемы и десериализуема</li>
-<ul>
+</ul>
 <br>
 <br>
 Далее в поисках решения я обратился к интересным алгоритмам таких как генетические и просвещался вот этой вот статьей: <a href="http://habrahabr.ru/post/254759/">Генетический алгоритм — наглядная реализация</a>
@@ -151,6 +153,558 @@ brute force (метод грубой силы) то есть путь полно
 Все равно не удается описать полность мысль в словестной форме. И все пошел я спать, может какие мысли появяться опять.<br>
 
 Надо глянуть: <a href="https://ru.wikipedia.org/wiki/%D0%A2%D0%B5%D0%BE%D1%80%D0%B8%D1%8F_%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%BE%D0%B2">Теория автоматов</a>
+
+<h2>День 94</h2>
+
+Генерация входной последовательности при помощи кода:
+<pre>
+QString alphabet() {
+	return "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890[]{}:,.&lt;&gt;/?\"'\\*&amp;^%$#!-+=";
+}
+
+// ----------------------------------------------------------------
+
+int g_nCountInputMaxChars = 55;
+
+// ----------------------------------------------------------------
+
+int g_nCountInputBits = g_nCountInputMaxChars*8;
+
+// ----------------------------------------------------------------
+
+QString generateRandomString() {
+	QString sAlphabet = alphabet();
+	int len = qrand() % (g_nCountInputBits/8) + 2;
+	QString str = "";
+	for (int i = 0; i &lt; len; i++) {
+		str += sAlphabet[qrand() % sAlphabet.length()];
+	}
+	return str;
+};
+</pre>
+
+<p>Как видно алфавит представляет собой английский алфавит (разного регистра), буквы, знаки препинания и другие печатные символы</p>
+
+<p>Статистика генерации бит:</p>
+
+<table bgcolor='#000'>
+	<tr>
+		<td bgcolor='#FFF' align=center>0-8</td>
+		<td bgcolor='#FFF' align=center>8-16</td>
+		<td bgcolor='#FFF' align=center>16-24</td>
+		<td bgcolor='#FFF' align=center>24-32</td>
+		<td bgcolor='#FFF' align=center>32-40</td>
+		<td bgcolor='#FFF' align=center>40-48</td>
+		<td bgcolor='#FFF' align=center>48-56</td>
+		<td bgcolor='#FFF' align=center>56-64</td>
+		<td bgcolor='#FFF' align=center>64-72</td>
+		<td bgcolor='#FFF' align=center>72-80</td>
+		<td bgcolor='#FFF' align=center>80-88</td>
+		<td bgcolor='#FFF' align=center>88-96</td>
+		<td bgcolor='#FFF' align=center>96-104</td>
+		<td bgcolor='#FFF' align=center>104-112</td>
+		<td bgcolor='#FFF' align=center>112-120</td>
+		<td bgcolor='#FFF' align=center>120-128</td>
+		<td bgcolor='#FFF' align=center>128-136</td>
+		<td bgcolor='#FFF' align=center>136-144</td>
+		<td bgcolor='#FFF' align=center>144-152</td>
+		<td bgcolor='#FFF' align=center>152-160</td>
+		<td bgcolor='#FFF' align=center>160-168</td>
+		<td bgcolor='#FFF' align=center>168-176</td>
+		<td bgcolor='#FFF' align=center>176-184</td>
+		<td bgcolor='#FFF' align=center>184-192</td>
+		<td bgcolor='#FFF' align=center>192-200</td>
+		<td bgcolor='#FFF' align=center>200-208</td>
+		<td bgcolor='#FFF' align=center>208-216</td>
+		<td bgcolor='#FFF' align=center>216-224</td>
+		<td bgcolor='#FFF' align=center>224-232</td>
+		<td bgcolor='#FFF' align=center>232-240</td>
+		<td bgcolor='#FFF' align=center>240-248</td>
+		<td bgcolor='#FFF' align=center>248-256</td>
+		<td bgcolor='#FFF' align=center>256-264</td>
+		<td bgcolor='#FFF' align=center>264-272</td>
+		<td bgcolor='#FFF' align=center>272-280</td>
+		<td bgcolor='#FFF' align=center>280-288</td>
+		<td bgcolor='#FFF' align=center>288-296</td>
+		<td bgcolor='#FFF' align=center>296-304</td>
+		<td bgcolor='#FFF' align=center>304-312</td>
+		<td bgcolor='#FFF' align=center>312-320</td>
+		<td bgcolor='#FFF' align=center>320-328</td>
+		<td bgcolor='#FFF' align=center>328-336</td>
+		<td bgcolor='#FFF' align=center>336-344</td>
+		<td bgcolor='#FFF' align=center>344-352</td>
+		<td bgcolor='#FFF' align=center>352-360</td>
+		<td bgcolor='#FFF' align=center>360-368</td>
+		<td bgcolor='#FFF' align=center>368-376</td>
+		<td bgcolor='#FFF' align=center>376-384</td>
+		<td bgcolor='#FFF' align=center>384-392</td>
+		<td bgcolor='#FFF' align=center>392-400</td>
+		<td bgcolor='#FFF' align=center>400-408</td>
+		<td bgcolor='#FFF' align=center>408-416</td>
+		<td bgcolor='#FFF' align=center>416-424</td>
+		<td bgcolor='#FFF' align=center>424-432</td>
+		<td bgcolor='#FFF' align=center>432-440</td>
+	</tr>
+	<tr>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+		<td bgcolor='#FFF' align=center>0%</td>
+	</tr>
+	<tr>
+		<td bgcolor='#FFF' align=center>67%</td>
+		<td bgcolor='#FFF' align=center>67%</td>
+		<td bgcolor='#FFF' align=center>66%</td>
+		<td bgcolor='#FFF' align=center>65%</td>
+		<td bgcolor='#FFF' align=center>63%</td>
+		<td bgcolor='#FFF' align=center>62%</td>
+		<td bgcolor='#FFF' align=center>61%</td>
+		<td bgcolor='#FFF' align=center>60%</td>
+		<td bgcolor='#FFF' align=center>58%</td>
+		<td bgcolor='#FFF' align=center>57%</td>
+		<td bgcolor='#FFF' align=center>56%</td>
+		<td bgcolor='#FFF' align=center>55%</td>
+		<td bgcolor='#FFF' align=center>53%</td>
+		<td bgcolor='#FFF' align=center>52%</td>
+		<td bgcolor='#FFF' align=center>51%</td>
+		<td bgcolor='#FFF' align=center>50%</td>
+		<td bgcolor='#FFF' align=center>49%</td>
+		<td bgcolor='#FFF' align=center>47%</td>
+		<td bgcolor='#FFF' align=center>46%</td>
+		<td bgcolor='#FFF' align=center>45%</td>
+		<td bgcolor='#FFF' align=center>44%</td>
+		<td bgcolor='#FFF' align=center>42%</td>
+		<td bgcolor='#FFF' align=center>41%</td>
+		<td bgcolor='#FFF' align=center>40%</td>
+		<td bgcolor='#FFF' align=center>39%</td>
+		<td bgcolor='#FFF' align=center>38%</td>
+		<td bgcolor='#FFF' align=center>36%</td>
+		<td bgcolor='#FFF' align=center>35%</td>
+		<td bgcolor='#FFF' align=center>34%</td>
+		<td bgcolor='#FFF' align=center>33%</td>
+		<td bgcolor='#FFF' align=center>31%</td>
+		<td bgcolor='#FFF' align=center>30%</td>
+		<td bgcolor='#FFF' align=center>29%</td>
+		<td bgcolor='#FFF' align=center>28%</td>
+		<td bgcolor='#FFF' align=center>26%</td>
+		<td bgcolor='#FFF' align=center>25%</td>
+		<td bgcolor='#FFF' align=center>24%</td>
+		<td bgcolor='#FFF' align=center>23%</td>
+		<td bgcolor='#FFF' align=center>22%</td>
+		<td bgcolor='#FFF' align=center>20%</td>
+		<td bgcolor='#FFF' align=center>19%</td>
+		<td bgcolor='#FFF' align=center>18%</td>
+		<td bgcolor='#FFF' align=center>17%</td>
+		<td bgcolor='#FFF' align=center>15%</td>
+		<td bgcolor='#FFF' align=center>14%</td>
+		<td bgcolor='#FFF' align=center>13%</td>
+		<td bgcolor='#FFF' align=center>12%</td>
+		<td bgcolor='#FFF' align=center>11%</td>
+		<td bgcolor='#FFF' align=center>9%</td>
+		<td bgcolor='#FFF' align=center>8%</td>
+		<td bgcolor='#FFF' align=center>7%</td>
+		<td bgcolor='#FFF' align=center>6%</td>
+		<td bgcolor='#FFF' align=center>4%</td>
+		<td bgcolor='#FFF' align=center>3%</td>
+		<td bgcolor='#FFF' align=center>2%</td>
+	</tr>
+	<tr>
+		<td bgcolor='#FFF' align=center>65%</td>
+		<td bgcolor='#FFF' align=center>65%</td>
+		<td bgcolor='#FFF' align=center>63%</td>
+		<td bgcolor='#FFF' align=center>62%</td>
+		<td bgcolor='#FFF' align=center>61%</td>
+		<td bgcolor='#FFF' align=center>60%</td>
+		<td bgcolor='#FFF' align=center>59%</td>
+		<td bgcolor='#FFF' align=center>58%</td>
+		<td bgcolor='#FFF' align=center>56%</td>
+		<td bgcolor='#FFF' align=center>55%</td>
+		<td bgcolor='#FFF' align=center>54%</td>
+		<td bgcolor='#FFF' align=center>53%</td>
+		<td bgcolor='#FFF' align=center>52%</td>
+		<td bgcolor='#FFF' align=center>50%</td>
+		<td bgcolor='#FFF' align=center>49%</td>
+		<td bgcolor='#FFF' align=center>48%</td>
+		<td bgcolor='#FFF' align=center>47%</td>
+		<td bgcolor='#FFF' align=center>46%</td>
+		<td bgcolor='#FFF' align=center>45%</td>
+		<td bgcolor='#FFF' align=center>43%</td>
+		<td bgcolor='#FFF' align=center>42%</td>
+		<td bgcolor='#FFF' align=center>41%</td>
+		<td bgcolor='#FFF' align=center>40%</td>
+		<td bgcolor='#FFF' align=center>39%</td>
+		<td bgcolor='#FFF' align=center>37%</td>
+		<td bgcolor='#FFF' align=center>36%</td>
+		<td bgcolor='#FFF' align=center>35%</td>
+		<td bgcolor='#FFF' align=center>34%</td>
+		<td bgcolor='#FFF' align=center>33%</td>
+		<td bgcolor='#FFF' align=center>32%</td>
+		<td bgcolor='#FFF' align=center>30%</td>
+		<td bgcolor='#FFF' align=center>29%</td>
+		<td bgcolor='#FFF' align=center>28%</td>
+		<td bgcolor='#FFF' align=center>27%</td>
+		<td bgcolor='#FFF' align=center>26%</td>
+		<td bgcolor='#FFF' align=center>24%</td>
+		<td bgcolor='#FFF' align=center>23%</td>
+		<td bgcolor='#FFF' align=center>22%</td>
+		<td bgcolor='#FFF' align=center>21%</td>
+		<td bgcolor='#FFF' align=center>20%</td>
+		<td bgcolor='#FFF' align=center>19%</td>
+		<td bgcolor='#FFF' align=center>17%</td>
+		<td bgcolor='#FFF' align=center>16%</td>
+		<td bgcolor='#FFF' align=center>15%</td>
+		<td bgcolor='#FFF' align=center>14%</td>
+		<td bgcolor='#FFF' align=center>13%</td>
+		<td bgcolor='#FFF' align=center>11%</td>
+		<td bgcolor='#FFF' align=center>10%</td>
+		<td bgcolor='#FFF' align=center>9%</td>
+		<td bgcolor='#FFF' align=center>8%</td>
+		<td bgcolor='#FFF' align=center>7%</td>
+		<td bgcolor='#FFF' align=center>6%</td>
+		<td bgcolor='#FFF' align=center>4%</td>
+		<td bgcolor='#FFF' align=center>3%</td>
+		<td bgcolor='#FFF' align=center>2%</td>
+	</tr>
+	<tr>
+		<td bgcolor='#FFF' align=center>50%</td>
+		<td bgcolor='#FFF' align=center>49%</td>
+		<td bgcolor='#FFF' align=center>49%</td>
+		<td bgcolor='#FFF' align=center>48%</td>
+		<td bgcolor='#FFF' align=center>47%</td>
+		<td bgcolor='#FFF' align=center>46%</td>
+		<td bgcolor='#FFF' align=center>45%</td>
+		<td bgcolor='#FFF' align=center>44%</td>
+		<td bgcolor='#FFF' align=center>43%</td>
+		<td bgcolor='#FFF' align=center>42%</td>
+		<td bgcolor='#FFF' align=center>41%</td>
+		<td bgcolor='#FFF' align=center>40%</td>
+		<td bgcolor='#FFF' align=center>39%</td>
+		<td bgcolor='#FFF' align=center>39%</td>
+		<td bgcolor='#FFF' align=center>38%</td>
+		<td bgcolor='#FFF' align=center>37%</td>
+		<td bgcolor='#FFF' align=center>36%</td>
+		<td bgcolor='#FFF' align=center>35%</td>
+		<td bgcolor='#FFF' align=center>34%</td>
+		<td bgcolor='#FFF' align=center>33%</td>
+		<td bgcolor='#FFF' align=center>32%</td>
+		<td bgcolor='#FFF' align=center>31%</td>
+		<td bgcolor='#FFF' align=center>30%</td>
+		<td bgcolor='#FFF' align=center>29%</td>
+		<td bgcolor='#FFF' align=center>29%</td>
+		<td bgcolor='#FFF' align=center>28%</td>
+		<td bgcolor='#FFF' align=center>27%</td>
+		<td bgcolor='#FFF' align=center>26%</td>
+		<td bgcolor='#FFF' align=center>25%</td>
+		<td bgcolor='#FFF' align=center>24%</td>
+		<td bgcolor='#FFF' align=center>23%</td>
+		<td bgcolor='#FFF' align=center>22%</td>
+		<td bgcolor='#FFF' align=center>21%</td>
+		<td bgcolor='#FFF' align=center>20%</td>
+		<td bgcolor='#FFF' align=center>20%</td>
+		<td bgcolor='#FFF' align=center>19%</td>
+		<td bgcolor='#FFF' align=center>18%</td>
+		<td bgcolor='#FFF' align=center>17%</td>
+		<td bgcolor='#FFF' align=center>16%</td>
+		<td bgcolor='#FFF' align=center>15%</td>
+		<td bgcolor='#FFF' align=center>14%</td>
+		<td bgcolor='#FFF' align=center>13%</td>
+		<td bgcolor='#FFF' align=center>12%</td>
+		<td bgcolor='#FFF' align=center>11%</td>
+		<td bgcolor='#FFF' align=center>10%</td>
+		<td bgcolor='#FFF' align=center>10%</td>
+		<td bgcolor='#FFF' align=center>9%</td>
+		<td bgcolor='#FFF' align=center>8%</td>
+		<td bgcolor='#FFF' align=center>7%</td>
+		<td bgcolor='#FFF' align=center>6%</td>
+		<td bgcolor='#FFF' align=center>5%</td>
+		<td bgcolor='#FFF' align=center>4%</td>
+		<td bgcolor='#FFF' align=center>3%</td>
+		<td bgcolor='#FFF' align=center>2%</td>
+		<td bgcolor='#FFF' align=center>1%</td>
+	</tr>
+	<tr>
+		<td bgcolor='#FFF' align=center>47%</td>
+		<td bgcolor='#FFF' align=center>47%</td>
+		<td bgcolor='#FFF' align=center>46%</td>
+		<td bgcolor='#FFF' align=center>45%</td>
+		<td bgcolor='#FFF' align=center>45%</td>
+		<td bgcolor='#FFF' align=center>44%</td>
+		<td bgcolor='#FFF' align=center>43%</td>
+		<td bgcolor='#FFF' align=center>42%</td>
+		<td bgcolor='#FFF' align=center>41%</td>
+		<td bgcolor='#FFF' align=center>40%</td>
+		<td bgcolor='#FFF' align=center>39%</td>
+		<td bgcolor='#FFF' align=center>38%</td>
+		<td bgcolor='#FFF' align=center>38%</td>
+		<td bgcolor='#FFF' align=center>37%</td>
+		<td bgcolor='#FFF' align=center>36%</td>
+		<td bgcolor='#FFF' align=center>35%</td>
+		<td bgcolor='#FFF' align=center>34%</td>
+		<td bgcolor='#FFF' align=center>33%</td>
+		<td bgcolor='#FFF' align=center>32%</td>
+		<td bgcolor='#FFF' align=center>32%</td>
+		<td bgcolor='#FFF' align=center>31%</td>
+		<td bgcolor='#FFF' align=center>30%</td>
+		<td bgcolor='#FFF' align=center>29%</td>
+		<td bgcolor='#FFF' align=center>28%</td>
+		<td bgcolor='#FFF' align=center>27%</td>
+		<td bgcolor='#FFF' align=center>26%</td>
+		<td bgcolor='#FFF' align=center>26%</td>
+		<td bgcolor='#FFF' align=center>25%</td>
+		<td bgcolor='#FFF' align=center>24%</td>
+		<td bgcolor='#FFF' align=center>23%</td>
+		<td bgcolor='#FFF' align=center>22%</td>
+		<td bgcolor='#FFF' align=center>21%</td>
+		<td bgcolor='#FFF' align=center>20%</td>
+		<td bgcolor='#FFF' align=center>19%</td>
+		<td bgcolor='#FFF' align=center>19%</td>
+		<td bgcolor='#FFF' align=center>18%</td>
+		<td bgcolor='#FFF' align=center>17%</td>
+		<td bgcolor='#FFF' align=center>16%</td>
+		<td bgcolor='#FFF' align=center>15%</td>
+		<td bgcolor='#FFF' align=center>14%</td>
+		<td bgcolor='#FFF' align=center>13%</td>
+		<td bgcolor='#FFF' align=center>13%</td>
+		<td bgcolor='#FFF' align=center>12%</td>
+		<td bgcolor='#FFF' align=center>11%</td>
+		<td bgcolor='#FFF' align=center>10%</td>
+		<td bgcolor='#FFF' align=center>9%</td>
+		<td bgcolor='#FFF' align=center>8%</td>
+		<td bgcolor='#FFF' align=center>7%</td>
+		<td bgcolor='#FFF' align=center>7%</td>
+		<td bgcolor='#FFF' align=center>6%</td>
+		<td bgcolor='#FFF' align=center>5%</td>
+		<td bgcolor='#FFF' align=center>4%</td>
+		<td bgcolor='#FFF' align=center>3%</td>
+		<td bgcolor='#FFF' align=center>2%</td>
+		<td bgcolor='#FFF' align=center>1%</td>
+	</tr>
+	<tr>
+		<td bgcolor='#FFF' align=center>51%</td>
+		<td bgcolor='#FFF' align=center>51%</td>
+		<td bgcolor='#FFF' align=center>50%</td>
+		<td bgcolor='#FFF' align=center>49%</td>
+		<td bgcolor='#FFF' align=center>48%</td>
+		<td bgcolor='#FFF' align=center>47%</td>
+		<td bgcolor='#FFF' align=center>46%</td>
+		<td bgcolor='#FFF' align=center>45%</td>
+		<td bgcolor='#FFF' align=center>44%</td>
+		<td bgcolor='#FFF' align=center>43%</td>
+		<td bgcolor='#FFF' align=center>42%</td>
+		<td bgcolor='#FFF' align=center>41%</td>
+		<td bgcolor='#FFF' align=center>40%</td>
+		<td bgcolor='#FFF' align=center>40%</td>
+		<td bgcolor='#FFF' align=center>39%</td>
+		<td bgcolor='#FFF' align=center>38%</td>
+		<td bgcolor='#FFF' align=center>37%</td>
+		<td bgcolor='#FFF' align=center>36%</td>
+		<td bgcolor='#FFF' align=center>35%</td>
+		<td bgcolor='#FFF' align=center>34%</td>
+		<td bgcolor='#FFF' align=center>33%</td>
+		<td bgcolor='#FFF' align=center>32%</td>
+		<td bgcolor='#FFF' align=center>31%</td>
+		<td bgcolor='#FFF' align=center>30%</td>
+		<td bgcolor='#FFF' align=center>29%</td>
+		<td bgcolor='#FFF' align=center>28%</td>
+		<td bgcolor='#FFF' align=center>27%</td>
+		<td bgcolor='#FFF' align=center>26%</td>
+		<td bgcolor='#FFF' align=center>26%</td>
+		<td bgcolor='#FFF' align=center>25%</td>
+		<td bgcolor='#FFF' align=center>24%</td>
+		<td bgcolor='#FFF' align=center>23%</td>
+		<td bgcolor='#FFF' align=center>22%</td>
+		<td bgcolor='#FFF' align=center>21%</td>
+		<td bgcolor='#FFF' align=center>20%</td>
+		<td bgcolor='#FFF' align=center>19%</td>
+		<td bgcolor='#FFF' align=center>18%</td>
+		<td bgcolor='#FFF' align=center>17%</td>
+		<td bgcolor='#FFF' align=center>16%</td>
+		<td bgcolor='#FFF' align=center>15%</td>
+		<td bgcolor='#FFF' align=center>14%</td>
+		<td bgcolor='#FFF' align=center>14%</td>
+		<td bgcolor='#FFF' align=center>13%</td>
+		<td bgcolor='#FFF' align=center>12%</td>
+		<td bgcolor='#FFF' align=center>11%</td>
+		<td bgcolor='#FFF' align=center>10%</td>
+		<td bgcolor='#FFF' align=center>9%</td>
+		<td bgcolor='#FFF' align=center>8%</td>
+		<td bgcolor='#FFF' align=center>7%</td>
+		<td bgcolor='#FFF' align=center>6%</td>
+		<td bgcolor='#FFF' align=center>5%</td>
+		<td bgcolor='#FFF' align=center>4%</td>
+		<td bgcolor='#FFF' align=center>3%</td>
+		<td bgcolor='#FFF' align=center>2%</td>
+		<td bgcolor='#FFF' align=center>1%</td>
+	</tr>
+	<tr>
+		<td bgcolor='#FFF' align=center>51%</td>
+		<td bgcolor='#FFF' align=center>51%</td>
+		<td bgcolor='#FFF' align=center>50%</td>
+		<td bgcolor='#FFF' align=center>49%</td>
+		<td bgcolor='#FFF' align=center>48%</td>
+		<td bgcolor='#FFF' align=center>47%</td>
+		<td bgcolor='#FFF' align=center>46%</td>
+		<td bgcolor='#FFF' align=center>45%</td>
+		<td bgcolor='#FFF' align=center>44%</td>
+		<td bgcolor='#FFF' align=center>43%</td>
+		<td bgcolor='#FFF' align=center>42%</td>
+		<td bgcolor='#FFF' align=center>41%</td>
+		<td bgcolor='#FFF' align=center>40%</td>
+		<td bgcolor='#FFF' align=center>40%</td>
+		<td bgcolor='#FFF' align=center>39%</td>
+		<td bgcolor='#FFF' align=center>38%</td>
+		<td bgcolor='#FFF' align=center>37%</td>
+		<td bgcolor='#FFF' align=center>36%</td>
+		<td bgcolor='#FFF' align=center>35%</td>
+		<td bgcolor='#FFF' align=center>34%</td>
+		<td bgcolor='#FFF' align=center>33%</td>
+		<td bgcolor='#FFF' align=center>32%</td>
+		<td bgcolor='#FFF' align=center>31%</td>
+		<td bgcolor='#FFF' align=center>30%</td>
+		<td bgcolor='#FFF' align=center>29%</td>
+		<td bgcolor='#FFF' align=center>28%</td>
+		<td bgcolor='#FFF' align=center>27%</td>
+		<td bgcolor='#FFF' align=center>27%</td>
+		<td bgcolor='#FFF' align=center>26%</td>
+		<td bgcolor='#FFF' align=center>25%</td>
+		<td bgcolor='#FFF' align=center>24%</td>
+		<td bgcolor='#FFF' align=center>23%</td>
+		<td bgcolor='#FFF' align=center>22%</td>
+		<td bgcolor='#FFF' align=center>21%</td>
+		<td bgcolor='#FFF' align=center>20%</td>
+		<td bgcolor='#FFF' align=center>19%</td>
+		<td bgcolor='#FFF' align=center>18%</td>
+		<td bgcolor='#FFF' align=center>17%</td>
+		<td bgcolor='#FFF' align=center>16%</td>
+		<td bgcolor='#FFF' align=center>15%</td>
+		<td bgcolor='#FFF' align=center>14%</td>
+		<td bgcolor='#FFF' align=center>14%</td>
+		<td bgcolor='#FFF' align=center>13%</td>
+		<td bgcolor='#FFF' align=center>12%</td>
+		<td bgcolor='#FFF' align=center>11%</td>
+		<td bgcolor='#FFF' align=center>10%</td>
+		<td bgcolor='#FFF' align=center>9%</td>
+		<td bgcolor='#FFF' align=center>8%</td>
+		<td bgcolor='#FFF' align=center>7%</td>
+		<td bgcolor='#FFF' align=center>6%</td>
+		<td bgcolor='#FFF' align=center>5%</td>
+		<td bgcolor='#FFF' align=center>4%</td>
+		<td bgcolor='#FFF' align=center>3%</td>
+		<td bgcolor='#FFF' align=center>2%</td>
+		<td bgcolor='#FFF' align=center>1%</td>
+	</tr>
+	<tr>
+		<td bgcolor='#FFF' align=center>51%</td>
+		<td bgcolor='#FFF' align=center>51%</td>
+		<td bgcolor='#FFF' align=center>50%</td>
+		<td bgcolor='#FFF' align=center>49%</td>
+		<td bgcolor='#FFF' align=center>48%</td>
+		<td bgcolor='#FFF' align=center>47%</td>
+		<td bgcolor='#FFF' align=center>46%</td>
+		<td bgcolor='#FFF' align=center>45%</td>
+		<td bgcolor='#FFF' align=center>44%</td>
+		<td bgcolor='#FFF' align=center>43%</td>
+		<td bgcolor='#FFF' align=center>42%</td>
+		<td bgcolor='#FFF' align=center>41%</td>
+		<td bgcolor='#FFF' align=center>41%</td>
+		<td bgcolor='#FFF' align=center>39%</td>
+		<td bgcolor='#FFF' align=center>39%</td>
+		<td bgcolor='#FFF' align=center>38%</td>
+		<td bgcolor='#FFF' align=center>37%</td>
+		<td bgcolor='#FFF' align=center>36%</td>
+		<td bgcolor='#FFF' align=center>35%</td>
+		<td bgcolor='#FFF' align=center>34%</td>
+		<td bgcolor='#FFF' align=center>33%</td>
+		<td bgcolor='#FFF' align=center>32%</td>
+		<td bgcolor='#FFF' align=center>31%</td>
+		<td bgcolor='#FFF' align=center>30%</td>
+		<td bgcolor='#FFF' align=center>29%</td>
+		<td bgcolor='#FFF' align=center>28%</td>
+		<td bgcolor='#FFF' align=center>27%</td>
+		<td bgcolor='#FFF' align=center>26%</td>
+		<td bgcolor='#FFF' align=center>26%</td>
+		<td bgcolor='#FFF' align=center>25%</td>
+		<td bgcolor='#FFF' align=center>24%</td>
+		<td bgcolor='#FFF' align=center>23%</td>
+		<td bgcolor='#FFF' align=center>22%</td>
+		<td bgcolor='#FFF' align=center>21%</td>
+		<td bgcolor='#FFF' align=center>20%</td>
+		<td bgcolor='#FFF' align=center>19%</td>
+		<td bgcolor='#FFF' align=center>18%</td>
+		<td bgcolor='#FFF' align=center>17%</td>
+		<td bgcolor='#FFF' align=center>16%</td>
+		<td bgcolor='#FFF' align=center>15%</td>
+		<td bgcolor='#FFF' align=center>14%</td>
+		<td bgcolor='#FFF' align=center>14%</td>
+		<td bgcolor='#FFF' align=center>13%</td>
+		<td bgcolor='#FFF' align=center>12%</td>
+		<td bgcolor='#FFF' align=center>11%</td>
+		<td bgcolor='#FFF' align=center>10%</td>
+		<td bgcolor='#FFF' align=center>9%</td>
+		<td bgcolor='#FFF' align=center>8%</td>
+		<td bgcolor='#FFF' align=center>7%</td>
+		<td bgcolor='#FFF' align=center>6%</td>
+		<td bgcolor='#FFF' align=center>5%</td>
+		<td bgcolor='#FFF' align=center>4%</td>
+		<td bgcolor='#FFF' align=center>3%</td>
+		<td bgcolor='#FFF' align=center>2%</td>
+		<td bgcolor='#FFF' align=center>1%</td>
+	</tr>
+</table>
+
+<p>то есть для 0, 8 бита ... строить функции не обязательно</p>
+
 
 	</body>
 </html>
