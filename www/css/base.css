@@ -5,7 +5,75 @@
 	margin: 10px;
 }
 
-
 .screenshot {
 	width: 300px;
+}
+
+.body {
+	padding: 0px;
+	margin: 0px;
+}
+
+.menu {
+	padding: 10px;
+	margin: 0px;
+	/*background: #cefce7;
+	background: #000;*/
+	background: #EEE;
+	vertical-align: middle;
+	text-align: left;
+}
+
+.leftmenu {
+	display: inline-block;
+	text-align: left;
+}
+
+.rightmenu {
+	display: inline-block;
+	text-align: center;
+	padding-left: 10px;
+}
+
+.logo {
+	display: inline-block;
+	float: left;
+	padding: 0px;
+	margin: 0px;
+	background: #FFF;
+	border: 2px solid #DDD;
+	vertical-align: middle;
+	border-radius: 10px;
+}
+
+.info {
+	display: inline-block;
+	/*float: left;*/
+	padding: 10px;
+	padding-left: 10px;
+	margin: 0px;
+	text-align: left;
+	/*color: #cefce7;*/
+	/*vertical-align: top;*/
+}
+
+.submenu {
+	display: inline-block;
+	padding: 10px;
+	margin: 0px;
+	border: 2px solid #DDD;
+	border-radius: 10px;
+}
+.submenu:hover {
+	display: inline-block;
+	padding: 10px;
+	background: #FFF;
+	margin: 0px;
+	cursor: pointer;
+}
+
+.content {
+	padding: 10px;
+	vertical-align: top;
+	text-align: center;
 }
