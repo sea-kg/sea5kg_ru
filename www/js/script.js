@@ -76,7 +76,7 @@ function openProjects() {
 	var lang = getLang();
 	var el = document.getElementById('content');
 	var content = '<strong>' + getCaption(data.projects.caption, lang) + '</strong><br></br></br>';
-
+	
 	el.innerHTML = content;
 }
 
