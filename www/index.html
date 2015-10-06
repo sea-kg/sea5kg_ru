@@ -1,8 +1,9 @@
 <html>
 	<head>
 		<title>sea-kg</title>
-		<link href='css/base.css' rel='stylesheet' type='text/css'>
-		<meta name="Keywords" content="ctf, php, platform, competition, work time">
+		<link href='css/base.css' rel='stylesheet' type='text/css'/>
+		<meta name="Keywords" content="ctf, php, platform, competition, work time"/>
+		<meta charset="utf-8"/>
 		<script type="text/javascript"></script>
 		<!-- Yandex.Metrika counter -->
 		<!-- script type="text/javascript">
@@ -32,24 +33,27 @@
 		</script -->
 		<noscript><div><img src="https://mc.yandex.ru/watch/32841695" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 		<!-- /Yandex.Metrika counter -->
+		<script src="js/data.js"></script>
+		<script src="js/script.js"></script>
 	</head>
-	<body class="body">
+	<body class="body" onload="init();">
 		<div class="menu">
 			<div>
 				<div class="logo"><img src="img/logo.png"/></div>
 				<div class="info"><strong>sea-kg</strong><br/><i>programmer</i></div>
 			</div>
 			<div class="rightmenu">
-				<div class="submenu">Projects</div>
-				<div class="submenu">Skills</div>
-				<div class="submenu">Contacts</div>
+				<div class="submenu" id="menu_projects" onclick="openProjects();"></div>
+				<div class="submenu" id="menu_skills" onclick="openSkills();">Skills</div>
+				<div class="submenu" id="menu_contacts" onclick="openContacts();">Contacts</div>
+				<div class="submenu"><a href="?lang=ru">Русская версия</a></div>
+				<div class="submenu"><a href="?lang=en">English version</a></div>
 			</div>
 		</div>
-		<div class="content">
-			Hello! My nick is sea-kg. This is page for aggregation my projects.
+		<div class="content" id="content">
 		</div>
 
-		<center>
+		<!-- center>
 			<br>
 			<h1>Welcome to official page of <b>sea-kg</b></h1><br>
 
@@ -68,10 +72,10 @@
 			
 			<div class="project">
 				<h1>WC for Datcha</h1>
-				<!-- img src="img/fhq/logo/fhq_2015.png"/ -->
+				<img src="img/fhq/logo/fhq_2015.png"/>
 				<p><a href="projects/wcdatcha/index.html">js program</a></p>
 			</div>
 			<a href="resume.html">resume</a>
-		</center>
+		</center -->
 	</body>
 </html>

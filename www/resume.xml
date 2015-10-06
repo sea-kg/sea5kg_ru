@@ -136,7 +136,7 @@ jury должно было обслуживать 12 сервисов:
 	- безопастный запуск подпрограмм написанных на bash или python
 	- мультипоточная работа с базой данных (Qt + MySQL)
 		</project>
-		<project name="marstalk" langs="Python, Brainfuck" technologies="Sockets, Network" sources="https://github.com/sibirctf2014/marstalk" video="">
+		<project name="marstalk" langs="Python, Brainfuck" technologies="Sockets, Network" sources="https://github.com/sea-kg/2014-service-marstalk" video="">
 Network service for sibirctf2014
 
 Для sibirctf2014 был разработан сервис на python.
