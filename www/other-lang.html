@@ -1,0 +1,102 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="author" content="sea-kg" />
+
+		<script type="text/javascript">
+
+			var size = 15;
+			var wirk = [
+				{x1: 0*size, y1: 0*size, x2: 1*size, y2: 0*size},
+				{x1: 1*size, y1: 0*size, x2: 2*size, y2: 0*size},
+				{x1: 2*size, y1: 0*size, x2: 3*size, y2: 0*size},
+				
+				{x1: 0*size, y1: 0*size, x2: 0*size, y2: 1*size},
+				{x1: 1*size, y1: 0*size, x2: 0*size, y2: 1*size},
+				{x1: 1*size, y1: 0*size, x2: 1*size, y2: 1*size},
+				{x1: 2*size, y1: 0*size, x2: 1*size, y2: 1*size},
+				{x1: 2*size, y1: 0*size, x2: 2*size, y2: 1*size},
+				{x1: 3*size, y1: 0*size, x2: 2*size, y2: 1*size},
+				{x1: 3*size, y1: 0*size, x2: 3*size, y2: 1*size},
+
+				{x1: 0*size, y1: 1*size, x2: 1*size, y2: 1*size},
+				{x1: 1*size, y1: 1*size, x2: 2*size, y2: 1*size},
+				{x1: 2*size, y1: 1*size, x2: 3*size, y2: 1*size},
+				
+				{x1: 0*size, y1: 1*size, x2: 0*size, y2: 2*size},
+				{x1: 1*size, y1: 1*size, x2: 0*size, y2: 2*size},
+				{x1: 1*size, y1: 1*size, x2: 1*size, y2: 2*size},
+				{x1: 2*size, y1: 1*size, x2: 1*size, y2: 2*size},
+				{x1: 2*size, y1: 1*size, x2: 2*size, y2: 2*size},
+				{x1: 3*size, y1: 1*size, x2: 2*size, y2: 2*size},
+				{x1: 3*size, y1: 1*size, x2: 3*size, y2: 2*size},
+				
+				{x1: 0*size, y1: 2*size, x2: 1*size, y2: 2*size},
+				{x1: 1*size, y1: 2*size, x2: 2*size, y2: 2*size},
+				{x1: 2*size, y1: 2*size, x2: 3*size, y2: 2*size},
+
+
+				{x1: 0*size, y1: 2*size, x2: 0*size, y2: 3*size},
+				{x1: 1*size, y1: 2*size, x2: 0*size, y2: 3*size},
+				{x1: 1*size, y1: 2*size, x2: 1*size, y2: 3*size},
+				{x1: 2*size, y1: 2*size, x2: 1*size, y2: 3*size},
+				{x1: 2*size, y1: 2*size, x2: 2*size, y2: 3*size},
+				// {x1: 3*size, y1: 2*size, x2: 2*size, y2: 3*size}, // key
+				{x1: 3*size, y1: 2*size, x2: 3*size, y2: 3*size},
+				{x1: 0*size, y1: 3*size, x2: 1*size, y2: 3*size},
+				{x1: 1*size, y1: 3*size, x2: 2*size, y2: 3*size},
+				{x1: 2*size, y1: 3*size, x2: 3*size, y2: 3*size},			
+			];
+			var wirk_key = {x1: 3*size, y1: 2*size, x2: 2*size, y2: 3*size};
+			
+			function printSimbol(context, x, y, val){
+				
+				var new_val = "";
+				for (var i = 0; i < val.length; i++)
+					new_val += val.charCodeAt(i).toString(2);
+
+				while(new_val.length < wirk.length){
+					new_val += "0";
+				}
+        
+				console.log(new_val);
+				// key
+				context.strokeStyle = '#000000';
+				context.beginPath();
+				context.moveTo(x + wirk_key.x1, y + wirk_key.y1);
+				context.lineTo(x + wirk_key.x2, y + wirk_key.y2);
+				context.lineWidth=2;
+				context.stroke();
+				
+				for(var i = 0; i < wirk.length; i++){
+					if(new_val[i] == "1"){
+						// console.log("i " + i);
+						var w = wirk[i];
+						// console.log(w);
+						context.strokeStyle = '#000000';
+						context.beginPath();
+						context.moveTo(x + w.x1, y + w.y1);
+						context.lineTo(x + w.x2, y + w.y2);
+						context.lineWidth=2;
+						context.stroke();
+					}
+				}
+			}
+
+			function onload(){
+				var c = document.getElementById("myCanvas");
+				var ctx = c.getContext("2d");
+				printSimbol(ctx, size, 10, "menu");
+				// printSimbol(ctx, size*5, 10, "hash");
+				printSimbol(ctx, size*5, 10, "mthr");
+				// printSimbol(ctx, size*5, 10, "");
+			}
+		</script>
+	</head>
+	<body onload="onload();">
+		<center>
+		<canvas id="myCanvas" width="200px" height="200px" style="border:1px solid #000000;">
+		</canvas>
+		</center>
+	</body>
+</html>
