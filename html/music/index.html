@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>sea5kg_music</title>
+        <meta charset="utf-8"/>
+        <meta name="Keywords" content="sea-kg, ctf, php, platform, competition, work time"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="../favicon.ico">
+        <link href='assets/index.css?ver=1' rel='stylesheet' type='text/css'/>
+    </head>
+    <body>
+        <div class="sea5kg-album-list" id="album_list">
+        </div>
+        <div class="sea5kg-playlist" id="album_play">
+            <div class="sea5kg-album-back" onclick="openAlbumList()">Back to albums</div>
+            <div class="sea5kg-album-info">
+                <div class="sea5kg-album-cover" id="album_cover"></div>
+                <div class="sea5kg-album-name" id="album_name"></div>
+            </div>
+            <div class="sea5kg-album-record-list" id="album_track_list">
+            </div>
+        </div>
+        <script>
+            window.albums = [
+                "2007_mind_to_sound"
+            ];
+        </script>
+        <script type="text/javascript" src="assets/index.js?ver1"></script>
+    </body>
+</html>

@@ -1,0 +1,66 @@
+{
+    "name": {
+        "en": "Mind to sound",
+        "ru": "Мысли в звук"
+    },
+    "year": "2007",
+    "playlist": [
+        {
+            "trackid": 3,
+            "name": {
+                "en": "Wasp's Coming",
+                "ru": "Пришествие Осы"
+            },
+            "filename": "sea5kg - 03-Wasp s Coming (2007 Mind to sound).mp3",
+            "duration": "02:26"
+        }, {
+            "trackid": 5,
+            "name": {
+                "en": "Changing color of weather",
+                "ru": "Меняющийся цвет погоды"
+            },
+            "filename": "sea5kg - 05-Changing color of weather (2007 Mind to sound).mp3",
+            "duration": "02:20"
+        }, {
+            "trackid": 6,
+            "name": {
+                "en": "Walk interrupted by a meeting",
+                "ru": "Прогулка прерванная встречей"
+            },
+            "filename": "sea5kg - 06-Walk interrupted by a meeting (2007 Mind to sound).mp3",
+            "duration": "02:44"
+        }, {
+            "trackid": 8,
+            "name": {
+                "en": "And here is the sun",
+                "ru": "И вот же солнце"
+            },
+            "filename": "sea5kg - 08-And here is the sun (2007 Mind to sound).mp3",
+            "duration": "02:58"
+        }, {
+            "trackid": 12,
+            "name": {
+                "en": "Killed record",
+                "ru": "Убитая пластинка"
+            },
+            "filename": "sea5kg - 12-Killed record (2007 Mind to sound).mp3",
+            "duration": "01:02"
+        }, {
+            "trackid": 13,
+            "name": {
+                "en": "Sounds from space",
+                "ru": "Звуки из космоса"
+            },
+            "filename": "sea5kg - 13-Sounds from space (2007 Mind to sound).mp3",
+            "duration": "02:28"
+        }, {
+            "trackid": 14,
+            "name": {
+                "en": "Big and important",
+                "ru": "Большой и важный"
+            },
+            "filename": "sea5kg - 14-Big and important (2007 Mind to sound).mp3",
+            "duration": "02:41"
+        }
+    ]
+}
