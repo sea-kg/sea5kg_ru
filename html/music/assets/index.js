@@ -46,10 +46,11 @@ function openAlbumList() {
     a_list.innerHTML = '';
 
     for (var i in window.albums) {
-        var name = window.albums[i];
+        var a = window.albums[i];
+        
         console.log(name);
-        var a_content = '<div class="sea5kg-album" onclick="openAlbum(\'' + name + '\');">'
-            + '<img width=100% height=100% src="./' + name + '/cover.jpg">'
+        var a_content = '<div class="sea5kg-album" onclick="openAlbum(\'' + a.id + '\');">'
+            + '<img width=100% height=100% src="./' + a.id + '/cover.jpg">'
             + '</div>';
         a_list.innerHTML += a_content;
     }
