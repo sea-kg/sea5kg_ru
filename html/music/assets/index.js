@@ -58,6 +58,9 @@ function openAlbumList() {
 
 function openAlbum(folder) {
     changeLocationState({"album": folder});
+    album_name.innerHTML = '';
+    album_track_list.innerHTML = '<div class="sea5kg-record-empty"></div>';
+    album_cover.style["background-image"] = null;
 
     var a_list = document.getElementById('album_list');
     a_list.style.display = 'none';

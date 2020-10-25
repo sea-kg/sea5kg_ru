@@ -16,12 +16,13 @@ body {
 
 
 .sea5kg-album-list {
-    display: grid;
+    display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .sea5kg-album {
-    display: inline-block;
+    display: flex;
     width: 250px;
     height: 250px;
     border: 5px solid black;
