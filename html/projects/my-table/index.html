@@ -1,0 +1,219 @@
+<html>
+    <head>
+        <title>Рассчеты для компьютерного стола</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <style>
+            .btn {
+                display: inline-block;
+                cursor: pointer;
+                border: 1px solid black;
+                background-color: #eee;
+                margin-bottom: 5px;
+                padding: 5px;
+            }
+
+            .board {
+                border: 1px solid black;
+                margin-bottom: 5px;
+                padding: 5px;
+            }
+            .board:hover {
+                background-color: #eee;
+                cursor: pointer;
+            }
+            .board.selected {
+                font-weight: bold;
+                text-align: right;
+                color: blue;
+            }
+            .selected-anchor {
+                color: red;
+            }
+
+            td, th {
+                vertical-align: top;
+                text-align: left;
+            }
+            .boards, #boards {
+                width: 250px;
+                vertical-align: top;
+            }
+        </style>
+        <script type="text/javascript" src="index.js?v=1"></script>
+        
+    </head>
+    <body onload="printPict();">
+        <h1>Рассчеты для компьютерного стола</h1>
+        <table width="100%">
+            <tr>
+                <th class="boards">Доски:
+                    <div class="btn" onclick="unselectBoards()">Unselect</div>
+                </th>
+                <th>Проекции:</th>
+            </tr>
+            <tr>
+                <td class="boards">
+                    <div id="edit_selected_board" style="display: none;">
+                        Edit Selected Board:<br>
+                        anchor: <select id="selected_anchor">
+                            </select>
+                        x: <input id="selected_x_cm" param="x_cm" oninput="updateValue(this)" value="">
+                        y: <input id="selected_y_cm" param="y_cm" oninput="updateValue(this)" value="">
+                        z: <input id="selected_z_cm" param="z_cm" oninput="updateValue(this)" value="">
+                    </div>
+                    <br>
+                    <div id="boards">
+                        <div 
+                            class="board"
+                            onclick="onClickBoard(this)"
+                            id="board0"
+                            anchor="none"
+                            x_cm="0"
+                            y_cm="0"
+                            z_cm="0"
+                            x_size_cm="50"
+                            y_size_cm="120"
+                            z_size_cm="1.6"
+                        >
+                            board0
+                        </div>
+
+                        <div 
+                            class="board"
+                            onclick="onClickBoard(this)"
+                            id="board1"
+                            anchor="board0"
+                            x_cm="50 - 21.6"
+                            y_cm="60 + 1.6"
+                            z_cm="-120"
+                            x_size_cm="20"
+                            y_size_cm="1.6"
+                            z_size_cm="120"
+                        >
+                            Board1
+                        </div>
+
+                        <div 
+                            class="board"
+                            onclick="onClickBoard(this)"
+                            id="board2"
+                            anchor="board1"
+                            x_cm="0"
+                            y_cm="53.5 + 1.6"
+                            z_cm="0"
+                            x_size_cm="20"
+                            y_size_cm="1.6"
+                            z_size_cm="120"
+                        >
+                            Board2
+                        </div>
+
+                        <div 
+                            class="board"
+                            onclick="onClickBoard(this)"
+                            id="board3"
+                            anchor="board1"
+                            x_cm="20"
+                            y_cm="16.8 + 1.6"
+                            z_cm="0"
+                            x_size_cm="1.6"
+                            y_size_cm="20"
+                            z_size_cm="120"
+                        >
+                            Board3
+                        </div>
+                        <div 
+                            class="board"
+                            onclick="onClickBoard(this)"
+                            id="board4"
+                            anchor="board1"
+                            x_cm="0"
+                            y_cm="1.6"
+                            z_cm="70 - 1.6"
+                            x_size_cm="20"
+                            y_size_cm="53.5"
+                            z_size_cm="1.6"
+                        >
+                            board4
+                        </div>
+                        <div 
+                            class="board"
+                            onclick="onClickBoard(this)"
+                            id="board5"
+                            anchor="board4"
+                            x_cm="0"
+                            y_cm="0"
+                            z_cm="- 18.5 - 1.6"
+                            x_size_cm="20"
+                            y_size_cm="53.5"
+                            z_size_cm="1.6"
+                        >
+                            board5
+                        </div>
+                        <div 
+                            class="board"
+                            onclick="onClickBoard(this)"
+                            id="board6"
+                            anchor="board5"
+                            x_cm="0"
+                            y_cm="0"
+                            z_cm="-33.5 - 1.6"
+                            x_size_cm="20"
+                            y_size_cm="53.5"
+                            z_size_cm="1.6"
+                        >
+                            board6
+                        </div>
+
+                        <div 
+                            class="board"
+                            onclick="onClickBoard(this)"
+                            id="board7"
+                            anchor="board0"
+                            x_cm="6"
+                            y_cm="120 - 1.6 - 7"
+                            z_cm="1.6"
+                            x_size_cm="40"
+                            y_size_cm="1.6"
+                            z_size_cm="69.5"
+                        >
+                            board7
+                        </div>
+                        <div 
+                            class="board"
+                            onclick="onClickBoard(this)"
+                            id="board8"
+                            anchor="board0"
+                            x_cm="6"
+                            y_cm="7"
+                            z_cm="1.6"
+                            x_size_cm="40"
+                            y_size_cm="1.6"
+                            z_size_cm="69.5"
+                        >
+                            board8
+                        </div>
+                        <div 
+                            class="board"
+                            onclick="onClickBoard(this)"
+                            id="board9"
+                            anchor="board0"
+                            x_cm="50-4"
+                            y_cm="7"
+                            z_cm="1.6"
+                            x_size_cm="1.6"
+                            y_size_cm="106"
+                            z_size_cm="40"
+                        >
+                            board9
+                        </div>
+                    </div>
+                    
+                </td>
+                <td>
+                    <canvas id="pictXY" width="1000" height="800"></canvas>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>
