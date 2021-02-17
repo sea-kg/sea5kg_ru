@@ -26,6 +26,14 @@
                 text-align: right;
                 color: blue;
             }
+
+            .board .show {
+                background-image: url("./eye-show.svg");
+                width: 25px;
+                height: 25px;
+                display: inline-block;
+            }
+
             .selected-anchor {
                 color: red;
             }
@@ -177,7 +185,7 @@
                             y_size_cm="1.6"
                             z_size_cm="69.5"
                         >
-                            board7
+                            board7 (40x69.5)
                         </div>
                         <div 
                             class="board"
@@ -191,7 +199,7 @@
                             y_size_cm="1.6"
                             z_size_cm="69.5"
                         >
-                            board8
+                            board8 (40x69.5)
                         </div>
                         <div 
                             class="board"
@@ -205,7 +213,50 @@
                             y_size_cm="106"
                             z_size_cm="40"
                         >
-                            board9
+                            board9 (106x40)
+                        </div>
+                        <div 
+                            class="board"
+                            onclick="onClickBoard(this)"
+                            id="board10"
+                            anchor="board0"
+                            x_cm="-120 + 40"
+                            y_cm="0"
+                            z_cm="-1.6"
+                            x_size_cm="120"
+                            y_size_cm="60"
+                            z_size_cm="1.6"
+                        >
+                            board10 (120x60)
+                        </div>
+                        <div 
+                            class="board"
+                            onclick="onClickBoard(this)"
+                            id="board11"
+                            anchor="board10"
+                            x_cm="7"
+                            y_cm="9"
+                            z_cm="1.6"
+                            x_size_cm="1.6"
+                            y_size_cm="40"
+                            z_size_cm="71.1"
+                        >
+                            board11 (40x71.1)
+                        </div>
+                        <div 
+                            class="board"
+                            onclick="onClickBoard(this)"
+                            id="board12"
+                            anchor="board11"
+                            x_cm="1.6"
+                            y_cm="0"
+                            z_cm="0"
+                            x_size_cm="117"
+                            y_size_cm="1.6"
+                            z_size_cm="40"
+                        >
+                            board12 (117x40)
+                            <div class="show"></div>
                         </div>
                     </div>
                     

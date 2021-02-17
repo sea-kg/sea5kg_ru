@@ -36,7 +36,7 @@ function parseAndCalculateValue(ret, anchorBoard, attrs, name) {
 
 function parseAllBoards() {
     window.all_boards = []
-    var els = document.getElementById('boards').getElementsByTagName('div');
+    var els = document.getElementById('boards').getElementsByClassName('board');
     var max_size_cm = 0.0;
     for (var i = 0; i < els.length; i++) {
         var attrs = els[i].attributes;
