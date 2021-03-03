@@ -36,8 +36,6 @@ function changeLocationState(newPageParams){
 }
 
 function openAlbumList() {
-    changeLocationState({});
-    
     var a_list = document.getElementById('picture_list');
     a_list.style.display = 'flex';
 
@@ -47,9 +45,18 @@ function openAlbumList() {
         var a = window.pictures[i];
         
         console.log(name);
-        var a_content = '<div class="sea5kg-picture" onclick="openFullPicture(\'' + a.id + '\');">'
-            + '<img width=100% height=100% src="./images/' + a.id + '-250x250.jpg">'
-            + '<div class="sea5kg-picture-caption">' + a.year + ' - ' + a.name + '</div>'
+        var a_content = ''
+            + '<div class="sea5kg-picture" onclick="openFullPicture(\'' + a.id + '\');">'
+            + '  <img width=100% height=100% src="./images/' + a.id + '-250x250.jpg">'
+            + '  <div class="sea5kg-picture-header">' 
+            + '     <div class="sea5kg-picture-caption">' + a.year + ' - ' + a.name + '</div>'
+        if (a.sold) {
+            a_content += '     <div class="sea5kg-picture-status sold">SOLD</div>'
+        } else {
+            a_content += '     <div class="sea5kg-picture-status sale">SALE</div>'
+        }
+        a_content += ''
+            + '  </div>'
             + '</div>';
         a_list.innerHTML += a_content;
     }
@@ -78,6 +85,8 @@ function openFullPicture(picid) {
     picture_full_contaner.style.display = 'block';
     picture_full_name.innerHTML = picture_info.year + " - " + picture_info.name;
     picture_full.style["background-image"] = 'url("images/' + picid + '-full.jpg")';
+    picture_full_sold.style.display = picture_info.sold ? 'inline-block' : 'none';
+    picture_full_sale.style.display = picture_info.sold ? 'none' : 'inline-block';
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
