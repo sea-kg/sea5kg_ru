@@ -47,14 +47,15 @@ body {
     display: inline-block;
     line-height: 25px;
     padding-left: 10px;
-    width: 190px;
+    width: 160px;
+    font-size: 12px;
 }
 
 .sea5kg-picture-status {
     display: inline-block;
     font-size: 10px;
     border-radius: 5px;
-    width: 35px;
+    width: 65px;
     text-align: center;
     color: black;
     font-weight: bold;
@@ -166,41 +167,4 @@ body {
     margin-right: auto;
     width: 300px;
     display: table;
-}
-
-.sea5kg-record {
-    display: table-row;
-    color: #fff;
-    width: 300px;
-    margin-top: 10px;
-    background-color: rgba(92,104,191,0.45);
-}
-
-.sea5kg-record-empty {
-    display: table-row;
-    height: 20px;
-    margin-top: 10px;
-    
-}
-
-.sea5kg-record-trackid {
-    display: table-cell;
-    width: 40px;
-    padding: 5px;
-}
-
-.sea5kg-record-player-play {
-    display: table-cell;
-}
-
-.sea5kg-record-name {
-    display: table-cell;
-    width: 220px;
-    padding: 5px;
-}
-
-.sea5kg-record-line {
-    display: table-cell;
-    width: 220px;
-    padding: 5px;
 }

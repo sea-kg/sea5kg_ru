@@ -51,9 +51,9 @@ function openAlbumList() {
             + '  <div class="sea5kg-picture-header">' 
             + '     <div class="sea5kg-picture-caption">' + a.year + ' - ' + a.name + '</div>'
         if (a.sold) {
-            a_content += '     <div class="sea5kg-picture-status sold">SOLD</div>'
+            a_content += '     <div class="sea5kg-picture-status sold">DONATED</div>'
         } else {
-            a_content += '     <div class="sea5kg-picture-status sale">SALE</div>'
+            a_content += '     <div class="sea5kg-picture-status sale">FREE</div>'
         }
         a_content += ''
             + '  </div>'
