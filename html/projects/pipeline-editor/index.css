@@ -1,0 +1,52 @@
+body {
+    background: #666;
+}
+
+.pipeline-editor-container {
+    position: fixed;
+    padding: 20px;
+    border: 1px solid yellow;
+    width: calc(100% - 100px);
+    height: calc(100% - 180px);
+    overflow: scroll;
+    background: #999;
+    z-index: 100;
+}
+
+.pipeline-editor-tabs {
+    display: block;
+    z-index: 1000;
+    position: relative;
+}
+
+.pipeline-editor-tab {
+    display: inline-block;
+    background: #aa66aa;
+    padding: 10px;
+    border-top: 1px solid yellow;
+    border-left: 1px solid yellow;
+    border-right: 1px solid yellow;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    vertical-align: bottom;
+    cursor: pointer;
+}
+
+.pipeline-editor-tab.active {
+    margin-bottom: -1px;
+    background: #999;
+}
+
+.json-content {
+    width: 100%;
+    height: calc(100% - 10px);
+}
+
+.pipeline-editor-btn {
+    display: inline-block;
+    background: #aa66aa;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid yellow;
+    color: yellow;
+}

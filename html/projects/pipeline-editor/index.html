@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>PiplineEditor by sea5kg</title>
+        <meta charset="utf-8"/>
+        <meta name="Keywords" content="sea5kg, pipline, editor, piplineeditor"/>
+        <link href='./index.css' rel='stylesheet' type='text/css'/>
+    
+    </head>
+<body>
+<br>
+<div class="pipeline-editor-tabs">
+    <div
+        class="pipeline-editor-tab active"
+        id="tab_ui_editor"
+        onclick="switch_to_ui_editor()"
+    >
+        UI Editor
+    </div>
+    <div
+        class="pipeline-editor-tab"
+        id="tab_json"
+        onclick="switch_to_json()"
+    >
+        JSON
+    </div>
+</div>
+
+<div class="pipeline-editor-container" id="tab_content_ui_editor">
+    <!-- div class="pipeline-editor-btn">New (+)</div>
+    <div class="pipeline-editor-btn">Save as image</div>
+    <div class="pipeline-editor-btn">Save as json</div -->
+    <i>You can move diagram down on scroll button</i> 
+    <canvas id="pupeline-diagram" width="500" height="500"></canvas>
+</div>
+
+<div class="pipeline-editor-container" id="tab_content_json" style="display: none;">
+    <textarea class="json-content" id="json_content">11111</textarea>
+</div>
+
+<script src="./data_pl_sample.js"></script>
+<script src="./render-pipeline.js"></script>
+<script src="./index.js"></script>
+
+</body>
+</html>
