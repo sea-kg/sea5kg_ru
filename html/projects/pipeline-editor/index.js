@@ -198,8 +198,8 @@ canvas.onmousedown = function(event) {
     if (event.button == 1) { // scroll button
         scrollMoving = true;
         scrollMovingPos = {
-            left: tab_content_ui_editor.scrollLeft,
-            top: tab_content_ui_editor.scrollTop,
+            left: canvas_container.scrollLeft,
+            top: canvas_container.scrollTop,
             x: event.clientX,
             y: event.clientY,
         };
@@ -225,8 +225,8 @@ canvas.onmousemove = function(event) {
         const dy = event.clientY - scrollMovingPos.y;
 
         // Scroll the element
-        tab_content_ui_editor.scrollTop = scrollMovingPos.top - dy;
-        tab_content_ui_editor.scrollLeft = scrollMovingPos.left - dx;
+        canvas_container.scrollTop = scrollMovingPos.top - dy;
+        canvas_container.scrollLeft = scrollMovingPos.left - dx;
     }
 
     if (movingEnable && selectedCard >= 0) {
@@ -270,7 +270,20 @@ canvas.onmousemove = function(event) {
     }
 };
 
-
+function export_to_json() {
+    var _data_pl = Object.assign({}, data_pl);
+    for (i in _data_pl) {
+        for (n in _data_pl[i]) {
+            if (n.startsWith("hidden_")) {
+                _data_pl[i][n] = undefined;        
+            }
+        }
+        // todo redesign
+        _data_pl[i]['x1'] = undefined;
+        _data_pl[i]['y1'] = undefined;
+    }
+    return _data_pl;
+}
 
 function switch_to_ui_editor() {
     document.getElementById("tab_content_ui_editor").style.display = "block";
@@ -290,17 +303,7 @@ function switch_to_json() {
     
     document.getElementById("tab_ui_editor").classList.remove("active");
     document.getElementById("tab_json").classList.add("active");
-    var _data_pl = Object.assign({}, data_pl);
-    for (i in _data_pl) {
-        for (n in _data_pl[i]) {
-            if (n.startsWith("hidden_")) {
-                _data_pl[i][n] = undefined;        
-            }
-        }
-        // todo redesign
-        _data_pl[i]['x1'] = undefined;
-        _data_pl[i]['y1'] = undefined;
-    }
+    var _data_pl = export_to_json();
     json_content.value = JSON.stringify(_data_pl, undefined, 4);
 }
 
@@ -310,9 +313,21 @@ function save_as_image() {
     win.document.write('<iframe src="' + dataUrl  + '" frameborder="0" style="border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;" allowfullscreen> </iframe>');
 }
 
+
+
+function save_to_localstorage() {
+    var _data_pl = export_to_json();
+    _data_pl = JSON.stringify(_data_pl, undefined, 4);
+    localStorage.setItem('data_pl', _data_pl);
+}
+
+
 document.addEventListener("DOMContentLoaded", function() {
+    var _data_pl = localStorage.getItem('data_pl')
+    if (_data_pl) {
+        data_pl = JSON.parse(_data_pl);
+    }
+
     update_meansures();
     update_pipeline_diagram();
 });
-
-

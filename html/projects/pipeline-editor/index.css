@@ -8,9 +8,20 @@ body {
     border: 1px solid yellow;
     width: calc(100% - 100px);
     height: calc(100% - 180px);
-    overflow: scroll;
     background: #999;
     z-index: 100;
+}
+
+.pipeline-editor-panel-buttons {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.pipeline-editor-canvas-container {
+    border: 1px solid yellow;
+    width: calc(100% - 100px);
+    height: calc(100% - 180px);
+    overflow: scroll;
 }
 
 .pipeline-editor-tabs {
@@ -54,4 +65,15 @@ body {
 
 .pipeline-editor-btn:hover {
     background: #6666aa;
+}
+
+
+.pipeline-editor-table {
+    display: table;
+    position: relative;
+}
+
+.pipeline-editor-table-cell {
+    position: relative;
+    display: table-cell;
 }

@@ -26,12 +26,28 @@
 </div>
 
 <div class="pipeline-editor-container" id="tab_content_ui_editor">
-    <div class="pipeline-editor-btn" onclick="save_as_image()">Save as image</div>
-
-    <!-- div class="pipeline-editor-btn">New (+)</div>
-    <div class="pipeline-editor-btn">Save as json</div -->
-    <i>You can move diagram down on scroll button</i> 
-    <canvas id="pipeline_diagram_canvas" width="500" height="500"></canvas>
+    <div class="pipeline-editor-panel-buttons">
+        <div class="pipeline-editor-btn" onclick="save_as_image()">Save as image</div>
+        <div class="pipeline-editor-btn" onclick="save_to_localstorage()">Save to localstorage</div>
+        <!-- div class="pipeline-editor-btn">New (+)</div>
+        <div class="pipeline-editor-btn">Save as json</div -->
+        <i>You can move diagram down on scroll button</i>
+    </div>
+    
+    <div class="pipeline-editor-table">
+        <div class="pipeline-editor-table-cell">
+            1
+        </div>
+        <div class="pipeline-editor-table-cell">
+            2
+        </div>
+    </div>
+   
+    <div class="pipeline-editor-canvas-container" id="canvas_container">
+        <canvas id="pipeline_diagram_canvas" width="500" height="500"></canvas>
+    </div>
+    
+    Properties of object
 </div>
 
 <div class="pipeline-editor-container" id="tab_content_json" style="display: none;">
