@@ -49,4 +49,9 @@ body {
     border-radius: 5px;
     border: 1px solid yellow;
     color: yellow;
+    cursor: pointer;
+}
+
+.pipeline-editor-btn:hover {
+    background: #6666aa;
 }

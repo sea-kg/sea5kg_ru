@@ -1,4 +1,4 @@
-var canvas = document.getElementById("pupeline-diagram");
+var canvas = document.getElementById("pipeline_diagram_canvas");
 var ctx = canvas.getContext("2d");
 init_canvas(ctx)
 
@@ -44,11 +44,9 @@ function calcY_in_px(cell_y) {
     return pl_padding + cell_y * pl_cell_height;
 }
 
-update_image_size();
-
 function update_pipeline_diagram() {
     update_image_size();
-    console.log("update_pipeline_diagram");
+    // console.log("update_pipeline_diagram");
 
     init_canvas(ctx)
 
@@ -93,10 +91,12 @@ function update_pipeline_diagram() {
         ctx.fillStyle = "black";
 
         ctx.strokeRect(x1, y1, pl_card_width, pl_card_height);
-        var d = 16;
-        ctx.fillText('' + p['name'], x1 + 3, y1 + d);
-        d += 16;
-        ctx.fillText('' + p['description'], x1 + 3, y1 + d);
+        var d = 20;
+        x1_name = (pl_card_width - p['hidden_name_width']) / 2;
+        ctx.fillText('' + p['name'], x1 + x1_name, y1 + d);
+        d += 20;
+        x1_description = (pl_card_width - p['hidden_description_width']) / 2;
+        ctx.fillText('' + p['description'], x1 + x1_description, y1 + d);
     }
 
     // parents
@@ -270,8 +270,7 @@ canvas.onmousemove = function(event) {
     }
 };
 
-update_meansures();
-update_pipeline_diagram();
+
 
 function switch_to_ui_editor() {
     document.getElementById("tab_content_ui_editor").style.display = "block";
@@ -304,3 +303,16 @@ function switch_to_json() {
     }
     json_content.value = JSON.stringify(_data_pl, undefined, 4);
 }
+
+function save_as_image() {
+    const dataUrl = pipeline_diagram_canvas.toDataURL("png");
+    var win = window.open();
+    win.document.write('<iframe src="' + dataUrl  + '" frameborder="0" style="border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;" allowfullscreen> </iframe>');
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    update_meansures();
+    update_pipeline_diagram();
+});
+
+
