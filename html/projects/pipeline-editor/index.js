@@ -82,8 +82,8 @@ function update_pipeline_diagram() {
         // console.log(p);
         var x1 = pl_padding + p.cell_x * pl_cell_width;
         var y1 = pl_padding + p.cell_y * pl_cell_height;
-        data_pl[i].x1 = x1;
-        data_pl[i].y1 = y1;
+        data_pl[i].hidden_x1 = x1;
+        data_pl[i].hidden_y1 = y1;
 
         // fill          
         ctx.fillStyle = pl_highlightCard == i ? "#E6ECDF" : "white";
@@ -103,64 +103,84 @@ function update_pipeline_diagram() {
     ctx.lineWidth = 1;
     for (var i in data_pl) {
         var p = data_pl[i];
-        
-        if (p.mother > 0 && p.father > 0) {
-        var mo = data_pl[p.mother];
-        var fa = data_pl[p.father];
-        
-        var mo_x1 = calcX_in_px(mo.cell_x);
-        var mo_y1 = calcY_in_px(mo.cell_y);
 
-        var fa_x1 = calcX_in_px(fa.cell_x);
-        var fa_y1 = calcY_in_px(fa.cell_y);
+        if (p.incoming) {
+            
 
-        var x1 = calcX_in_px(p.cell_x);
-        var y1 = calcY_in_px(p.cell_y);
+            var main_x1 = calcX_in_px(p.cell_x) + pl_card_width / 2;
+            var main_y1 = calcY_in_px(p.cell_y);
 
-        mo_x1 += pl_card_width / 2;
-        mo_y1 += pl_card_height;
-        fa_x1 += pl_card_width / 2;
-        fa_y1 += pl_card_height;
-        x1 += pl_card_width / 2;
+            var max_y = 0;
+            var min_x = 0;
+            var max_x = 0;
+            var has_income = false;
+            for (var inc in p.incoming) {
+                var node = data_pl[inc];
+                if (!node) {
+                    continue;
+                }
+                var inc_x1 = calcX_in_px(node.cell_x) + pl_card_width / 2;
+                var inc_y1 = calcY_in_px(node.cell_y) + pl_card_height;
 
-        var x2 = (mo_x1 + fa_x1) / 2;
-        // var y2 = Math.max(fa_y1, mo_y1) + pl_card_width / 3;
-        var y2 = Math.max(fa_y1, mo_y1) + 30;
-        var y3 = y2 + 20;
+                if (!has_income) {
+                    has_income = true;
+                    max_y = inc_y1;
+                    min_x = inc_x1;
+                    max_x = inc_x1;
+                } else {
+                    max_y = Math.max(inc_y1, max_y);
+                    min_x = Math.min(inc_x1, min_x);
+                    max_x = Math.max(inc_x1, max_x);
+                }
+            }
 
-        ctx.beginPath();
-        ctx.arc(mo_x1, mo_y1, 6, 0, Math.PI);
-        ctx.fill();
+            min_x = Math.min(main_x1, min_x);
+            max_x = Math.max(main_x1, max_x);
 
-        ctx.beginPath();
-        ctx.arc(fa_x1, fa_y1, 6, 0, Math.PI);
-        ctx.fill();
+            max_y += pl_cell_height / 2 + (pl_cell_height - pl_card_height) / 2;
 
-        ctx.beginPath();
-        ctx.moveTo(mo_x1, mo_y1);
-        ctx.lineTo(mo_x1, y2);
-        ctx.lineTo(fa_x1, y2);
-        ctx.lineTo(fa_x1, fa_y1);
-        ctx.stroke();
-        
-        ctx.fillRect(x2-3, y2-3, 6, 6);
-        ctx.fillRect(x2-3, y3-3, 6, 6);
+            for (var inc in p.incoming) {
+                var node = data_pl[inc];
+                if (!node) {
+                    continue;
+                }
+                var inc_x1 = calcX_in_px(node.cell_x) + pl_card_width / 2;
+                var inc_y1 = calcY_in_px(node.cell_y) + pl_card_height;
 
-        ctx.beginPath();
-        ctx.moveTo(x2, y2);
-        ctx.lineTo(x2, y3);
-        ctx.lineTo(x1, y3);
-        ctx.lineTo(x1, y1);
-        ctx.stroke();
+                // out circle
+                ctx.beginPath();
+                ctx.arc(inc_x1, inc_y1, 6, 0, Math.PI);
+                ctx.fill();
 
-        // arrow
-        ctx.beginPath();
-        ctx.moveTo(x1-6, y1-12);
-        ctx.lineTo(x1+6, y1-12);
-        ctx.lineTo(x1, y1);
-        ctx.lineTo(x1-6, y1-12);
-        ctx.fill();
-        
+                ctx.beginPath();
+                ctx.moveTo(inc_x1, inc_y1);
+                ctx.lineTo(inc_x1, max_y);
+                ctx.stroke();
+
+                ctx.fillRect(inc_x1 - 3, max_y - 3, 6, 6);
+            }
+            
+            if (has_income) {
+                // horizontal line
+                ctx.beginPath();
+                ctx.moveTo(min_x, max_y);
+                ctx.lineTo(max_x, max_y);
+                ctx.stroke();
+
+                // to
+                ctx.beginPath();
+                ctx.moveTo(main_x1, max_y);
+                ctx.lineTo(main_x1, main_y1);
+                ctx.stroke();
+
+                // arrow
+                ctx.beginPath();
+                ctx.moveTo(main_x1 - 6, main_y1 - 12);
+                ctx.lineTo(main_x1 + 6, main_y1 - 12);
+                ctx.lineTo(main_x1, main_y1);
+                ctx.lineTo(main_x1 - 6, main_y1 - 12);
+                ctx.fill();
+            }
         }
     }
 }
@@ -247,9 +267,9 @@ canvas.onmousemove = function(event) {
     var changesExists = false;
     pl_highlightCard = null;
     for (var i in data_pl) {
-        var x1 = data_pl[i].x1;
+        var x1 = data_pl[i].hidden_x1;
         var x2 = x1 + pl_card_width;
-        var y1 = data_pl[i].y1;
+        var y1 = data_pl[i].hidden_y1;
         var y2 = y1 + pl_card_height;
         var res = false;
 
@@ -283,9 +303,6 @@ function export_to_json() {
                 _data_pl[i][n] = data_pl[i][n];
             }
         }
-        // todo redesign
-        _data_pl[i]['x1'] = undefined;
-        _data_pl[i]['y1'] = undefined;
     }
     return _data_pl;
 }
@@ -342,8 +359,7 @@ function add_block() {
             data_pl[new_id] = {
                 "name": "edit me",
                 "description": "edit me",
-                "mother": 0,
-                "father": 0,
+                "incoming": {},
                 "cell_x": 0,
                 "cell_y": 0
             }
