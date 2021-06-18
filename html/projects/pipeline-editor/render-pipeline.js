@@ -7,6 +7,8 @@ var pl_card_height = 62;
 var pl_height = 100;
 var pl_width = 100;
 var pl_padding = 20;
+var pl_scale = 1.0;
+var pl_highlightCard = null;
 
 function init_canvas(ctx) {
     ctx.font = fontSize + "px Arial";
