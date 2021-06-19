@@ -307,24 +307,31 @@ function export_to_json() {
     return _data_pl;
 }
 
-function switch_to_ui_editor() {
-    document.getElementById("tab_content_ui_editor").style.display = "block";
-    document.getElementById("tab_content_json").style.display = "none";
+function switch_ui_to_tab(_this, _callback) {
+    var els = document.getElementsByClassName('pipeline-editor-tab');
+    var active_id = _this.id;
+    for (var i = 0; i < els.length; i++) {
+        var tab_content_id = els[i].getAttribute('tab_content_id');
+        if (els[i].id == active_id) {
+            els[i].classList.add("active");
+            document.getElementById(tab_content_id).style.display = 'block';
+        } else {
+            els[i].classList.remove("active");
+            document.getElementById(tab_content_id).style.display = 'none';
+        }
+    }
+    if (_callback) {
+        _callback();
+    }
+}
 
-    document.getElementById("tab_ui_editor").classList.add("active");
-    document.getElementById("tab_json").classList.remove("active");
-
+function switch_to_ui_editor(active_id) {
     data_pl = JSON.parse(json_content.value);
     update_meansures();
     update_pipeline_diagram();
 }
 
 function switch_to_json() {
-    document.getElementById("tab_content_ui_editor").style.display = "none";
-    document.getElementById("tab_content_json").style.display = "block";
-    
-    document.getElementById("tab_ui_editor").classList.remove("active");
-    document.getElementById("tab_json").classList.add("active");
     var _data_pl = export_to_json();
     json_content.value = JSON.stringify(_data_pl, undefined, 4);
 }
@@ -389,12 +396,30 @@ function scale_minus() {
     pipeline_diagram_canvas.style.transform = "scale(" + pl_scale + ") translate(" + tr_x + "px, " + tr_y + "px)";
 }
 
+
+function resize_canvas() {
+    console.log(window.innerWidth);
+
+    var canvas_cont = document.getElementById('canvas_container')
+
+    new_width = (window.innerWidth - 200) + 'px';
+    canvas_cont.style['max-width'] = new_width;
+    canvas_cont.style['width'] = new_width;
+
+    new_height = (window.innerHeight - 300) + 'px';
+    canvas_cont.style['max-height'] = new_height;
+    canvas_cont.style['height'] = new_height;
+}
+
 document.addEventListener("DOMContentLoaded", function() {
     var _data_pl = localStorage.getItem('data_pl')
     if (_data_pl) {
         data_pl = JSON.parse(_data_pl);
     }
-
+    resize_canvas();
     update_meansures();
     update_pipeline_diagram();
 });
+
+
+window.addEventListener("resize", resize_canvas);

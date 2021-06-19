@@ -12,25 +12,40 @@
     <div
         class="pipeline-editor-tab active"
         id="tab_ui_editor"
-        onclick="switch_to_ui_editor()"
+        tab_content_id="tab_content_ui_editor"
+        onclick="switch_ui_to_tab(this, switch_to_ui_editor);"
     >
         UI Editor
     </div>
     <div
         class="pipeline-editor-tab"
         id="tab_json"
-        onclick="switch_to_json()"
+        tab_content_id="tab_content_json"
+        onclick="switch_ui_to_tab(this, switch_to_json);"
     >
         JSON
+    </div>
+    <div
+        class="pipeline-editor-tab"
+        id="tab_export"
+        tab_content_id="tab_content_export"
+        onclick="switch_ui_to_tab(this, null)"
+    >
+        Export
+    </div>
+    <div
+        class="pipeline-editor-tab"
+        id="tab_settings"
+        tab_content_id="tab_content_settings"
+        onclick="switch_ui_to_tab(this, null)"
+    >
+        Settings
     </div>
 </div>
 
 <div class="pipeline-editor-container" id="tab_content_ui_editor">
     <div class="pipeline-editor-panel-buttons">
         <div class="pipeline-editor-btn" onclick="add_block()">Add block (+)</div>
-        <div class="pipeline-editor-btn" onclick="save_as_image()">Save as image</div>
-        <div class="pipeline-editor-btn" onclick="save_to_localstorage()">Save to localstorage</div>
-
         <div class="pipeline-editor-btn" onclick="scale_minus()">Scale (-)</div>
         <div class="pipeline-editor-btn" onclick="scale_reset()">Scale reset (.)</div>
         <div class="pipeline-editor-btn" onclick="scale_plus()">Scale (+)</div>
@@ -39,23 +54,36 @@
     </div>
     
     <div class="pipeline-editor-table">
-        <div class="pipeline-editor-table-cell">
-            1
+        <div class="pipeline-editor-table-cell functions" id="container_functions">
+            functions
         </div>
-        <div class="pipeline-editor-table-cell">
-            2
+        <div class="pipeline-editor-table-cell editor">
+            <div class="pipeline-editor-canvas-container" id="canvas_container">
+                <canvas id="pipeline_diagram_canvas"></canvas>
+            </div>        
+        </div>
+        <div class="pipeline-editor-table-cell properties" id="container_properties">
+            properties
         </div>
     </div>
    
-    <div class="pipeline-editor-canvas-container" id="canvas_container">
-        <canvas id="pipeline_diagram_canvas" width="500" height="500"></canvas>
-    </div>
+    
     
     Properties of object
 </div>
 
 <div class="pipeline-editor-container" id="tab_content_json" style="display: none;">
     <textarea class="json-content" id="json_content">11111</textarea>
+</div>
+
+<div class="pipeline-editor-container" id="tab_content_settings" style="display: none;">
+    TODO Autosave
+</div>
+
+<div class="pipeline-editor-container" id="tab_content_export" style="display: none;">
+    <h3>Export</h3>
+    <div class="pipeline-editor-btn" onclick="save_as_image()">Save as image</div>
+    <div class="pipeline-editor-btn" onclick="save_to_localstorage()">Save to localstorage</div>
 </div>
 
 <script src="./data_pl_sample.js?ver=1"></script>

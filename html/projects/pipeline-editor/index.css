@@ -1,12 +1,11 @@
 body {
     background: #666;
+    height: 100%;
 }
 
 .pipeline-editor-container {
-    position: fixed;
     padding: 20px;
     border: 1px solid yellow;
-    width: calc(100% - 100px);
     height: calc(100% - 180px);
     background: #999;
     z-index: 100;
@@ -19,8 +18,8 @@ body {
 
 .pipeline-editor-canvas-container {
     border: 1px solid yellow;
-    width: calc(100% - 100px);
-    height: calc(100% - 180px);
+    width: 100px;
+    height: 100px;
     overflow: scroll;
 }
 
@@ -78,10 +77,30 @@ body {
 
 .pipeline-editor-table {
     display: table;
-    position: relative;
+    width: 100%;
+    max-width: 100%;
 }
 
 .pipeline-editor-table-cell {
     position: relative;
     display: table-cell;
 }
+
+.pipeline-editor-table-cell.functions {
+    width: 50px;
+    max-width: 50px;
+    height: auto;
+}
+
+.pipeline-editor-table-cell.editor {
+    width: 100%;
+    max-width: 100px;
+    height: 100px;
+    max-height: 100px;
+}
+
+.pipeline-editor-table-cell.properties {
+    width: 150px;
+    max-width: 150px;
+}
+
