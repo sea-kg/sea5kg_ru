@@ -45,31 +45,28 @@
 
 <div class="pipeline-editor-container" id="tab_content_ui_editor">
     <div class="pipeline-editor-panel-buttons">
-        <div class="pipeline-editor-btn" onclick="add_block()">Add block (+)</div>
-        <div class="pipeline-editor-btn" onclick="scale_minus()">Scale (-)</div>
-        <div class="pipeline-editor-btn" onclick="scale_reset()">Scale reset (.)</div>
-        <div class="pipeline-editor-btn" onclick="scale_plus()">Scale (+)</div>
-        <!-- div class="pipeline-editor-btn">Save as json</div -->
         <i>You can move diagram down on scroll button</i>
     </div>
     
     <div class="pipeline-editor-table">
-        <div class="pipeline-editor-table-cell functions" id="container_functions">
-            functions
-        </div>
-        <div class="pipeline-editor-table-cell editor">
-            <div class="pipeline-editor-canvas-container" id="canvas_container">
-                <canvas id="pipeline_diagram_canvas"></canvas>
-            </div>        
-        </div>
-        <div class="pipeline-editor-table-cell properties" id="container_properties">
-            properties
+        <div class="pipeline-editor-table-row">
+            <div class="pipeline-editor-table-cell functions" id="container_functions">
+                <div class="pipeline-editor-functions-btn add-block" onclick="add_block()"></div>
+                <div class="pipeline-editor-functions-btn scale-plus" onclick="scale_plus()"></div>
+                <div class="pipeline-editor-functions-btn scale-reset" onclick="scale_reset()"></div>
+                <div class="pipeline-editor-functions-btn scale-minus" onclick="scale_minus()"></div>
+
+            </div>
+            <div class="pipeline-editor-table-cell editor">
+                <div class="pipeline-editor-canvas-container" id="canvas_container">
+                    <canvas id="pipeline_diagram_canvas"></canvas>
+                </div>        
+            </div>
+            <div class="pipeline-editor-table-cell properties" id="container_properties">
+                properties
+            </div>
         </div>
     </div>
-   
-    
-    
-    Properties of object
 </div>
 
 <div class="pipeline-editor-container" id="tab_content_json" style="display: none;">

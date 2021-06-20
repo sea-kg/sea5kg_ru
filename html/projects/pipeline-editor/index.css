@@ -5,7 +5,7 @@ body {
 
 .pipeline-editor-container {
     padding: 20px;
-    border: 1px solid yellow;
+    border: 1px solid rgba(159,240,5,0.5);
     height: calc(100% - 180px);
     background: #999;
     z-index: 100;
@@ -17,7 +17,7 @@ body {
 }
 
 .pipeline-editor-canvas-container {
-    border: 1px solid yellow;
+    border: 1px solid rgba(159,240,5,0.5);
     width: 100px;
     height: 100px;
     overflow: scroll;
@@ -33,9 +33,9 @@ body {
     display: inline-block;
     background: #aa66aa;
     padding: 10px;
-    border-top: 1px solid yellow;
-    border-left: 1px solid yellow;
-    border-right: 1px solid yellow;
+    border-top: 1px solid rgba(159,240,5,0.5);
+    border-left: 1px solid rgba(159,240,5,0.5);
+    border-right: 1px solid rgba(159,240,5,0.5);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     vertical-align: bottom;
@@ -57,7 +57,7 @@ body {
     background: #aa66aa;
     padding: 5px;
     border-radius: 5px;
-    border: 1px solid yellow;
+    border: 1px solid rgba(159,240,5,0.5);
     color: yellow;
     cursor: pointer;
 
@@ -79,16 +79,22 @@ body {
     display: table;
     width: 100%;
     max-width: 100%;
+    table-layout: fixed;
+}
+
+.pipeline-editor-table-row {
+    display: table-row;
 }
 
 .pipeline-editor-table-cell {
-    position: relative;
     display: table-cell;
+    vertical-align: top;
+
 }
 
 .pipeline-editor-table-cell.functions {
-    width: 50px;
-    max-width: 50px;
+    width: 65px;
+    max-width: 65px;
     height: auto;
 }
 
@@ -102,5 +108,37 @@ body {
 .pipeline-editor-table-cell.properties {
     width: 150px;
     max-width: 150px;
+}
+
+.pipeline-editor-functions-btn {
+    display: block;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.pipeline-editor-functions-btn:hover {
+    transform: scale(1.1);
+    background-color: rgba(159,240,5,0.5);
+}
+
+
+.pipeline-editor-functions-btn.add-block {
+    background-image: url("./images/add-block.svg");
+}
+
+
+.pipeline-editor-functions-btn.scale-minus {
+    background-image: url("./images/scale-minus.svg");
+}
+
+.pipeline-editor-functions-btn.scale-reset {
+    background-image: url("./images/scale-reset.svg");
+}
+
+.pipeline-editor-functions-btn.scale-plus {
+    background-image: url("./images/scale-plus.svg");
 }
 
