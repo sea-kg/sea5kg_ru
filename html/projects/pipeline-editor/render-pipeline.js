@@ -1,5 +1,5 @@
 class RenderPipelineEditor {
-    constructor(canvas_id) {
+    constructor(canvas_id, canvas_container_id) {
         this.fontSize = 16;
         this.pl_cell_width = 170;
         this.pl_cell_height = 86;
@@ -11,11 +11,18 @@ class RenderPipelineEditor {
         this.pl_padding = 20;
         this.pl_scale = 1.0;
         this.pl_highlightCard = null;
+        this.pl_data = {}; // TODO: original user data
+        this.pt_data_tmp = {}; // TODO: data with preprocessing like a real x,y
         this.movingEnable = false;
         this.scrollMoving = false;
         this.scrollMovingPos = {};
+        this.conneсtingBlocks = {
+            'state': 'nope',
+        };
 
         this.canvas = document.getElementById(canvas_id);
+        this.canvas_container = document.getElementById(canvas_container_id);
+
         this.ctx = this.canvas.getContext("2d");
         var self = this;
         this.canvas.onmouseover = function(event) {
@@ -69,12 +76,25 @@ class RenderPipelineEditor {
         if (event.button == 1) { // scroll button
             this.scrollMoving = true;
             this.scrollMovingPos = {
-                left: canvas_container.scrollLeft,
-                top: canvas_container.scrollTop,
+                left: this.canvas_container.scrollLeft,
+                top: this.canvas_container.scrollTop,
                 x: event.clientX,
                 y: event.clientY,
             };
             return;
+        }
+
+        if (this.conneсtingBlocks.state == 'select-incoming') {
+            console.log(this.conneсtingBlocks);
+            if (this.conneсtingBlocks.incoming_block_id != null) {
+                this.conneсtingBlocks.state = 'select-block';
+            }
+        } else if (this.conneсtingBlocks.state == 'select-block') {
+            console.log(this.conneсtingBlocks);
+            if (this.conneсtingBlocks.block_id != null) {
+                this.conneсtingBlocks.state = 'finish';
+                this.do_connection_blocks();
+            }
         }
 
         if (this.pl_highlightCard != null) {
@@ -83,6 +103,19 @@ class RenderPipelineEditor {
         }
     };
 
+    find_block_id(x0, y0) {
+        var found_val = null;
+        for (var i in data_pl) {
+            var x1 = data_pl[i].hidden_x1;
+            var x2 = x1 + this.pl_card_width;
+            var y1 = data_pl[i].hidden_y1;
+            var y2 = y1 + this.pl_card_height;
+            if (x0 > x1 && x0 < x2 && y0 > y1 && y0 < y2) {
+                found_val = i;
+            }
+        }
+        return found_val;
+    }
 
     canvas_onmousemove(event) {
         var target = event.target;
@@ -91,14 +124,25 @@ class RenderPipelineEditor {
         // console.log(co);
         var x0 = event.clientX - co.left;
         var y0 = event.clientY - co.top;
+        var block_id = this.find_block_id(x0, y0);
+
+        if (this.conneсtingBlocks.state == 'select-incoming') {
+            this.conneсtingBlocks.incoming_block_id = block_id;
+            // console.log(this.conneсtingBlocks)
+        }
+
+        if (this.conneсtingBlocks.state == 'select-block') {
+            this.conneсtingBlocks.block_id = block_id;
+            // console.log(this.conneсtingBlocks)
+        }
 
         if (this.scrollMoving) {
             const dx = event.clientX - this.scrollMovingPos.x;
             const dy = event.clientY - this.scrollMovingPos.y;
 
             // Scroll the element
-            canvas_container.scrollTop = this.scrollMovingPos.top - dy;
-            canvas_container.scrollLeft = this.scrollMovingPos.left - dx;
+            this.canvas_container.scrollTop = this.scrollMovingPos.top - dy;
+            this.canvas_container.scrollLeft = this.scrollMovingPos.left - dx;
             return;
         }
 
@@ -117,6 +161,8 @@ class RenderPipelineEditor {
         
         var changesExists = false;
         this.pl_highlightCard = null;
+        // var block_id = find_block_id(x0, y0);
+
         for (var i in data_pl) {
             var x1 = data_pl[i].hidden_x1;
             var x2 = x1 + this.pl_card_width;
@@ -371,5 +417,22 @@ class RenderPipelineEditor {
         this.draw_grid();
         this.draw_cards();
         this.draw_lines();
+    }
+
+    start_connect_blocks() {
+        this.conneсtingBlocks.state = 'select-incoming';
+    }
+
+    do_connection_blocks() {
+        console.log(this.conneсtingBlocks);
+        if (this.conneсtingBlocks.state == 'finish') {
+            this.conneсtingBlocks.state = 'nope';
+            var bl1 = this.conneсtingBlocks.incoming_block_id;
+            var bl2 = this.conneсtingBlocks.block_id;
+            data_pl[bl2]["incoming"][bl1] = "";
+            console.log(data_pl[bl2])
+            this.update_pipeline_diagram();
+            
+        }
     }
 };

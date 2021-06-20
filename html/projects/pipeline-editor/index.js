@@ -1,4 +1,4 @@
-var render = new RenderPipelineEditor("pipeline_diagram_canvas");
+
 
 function export_to_json() {
     var _data_pl = {};
@@ -47,7 +47,6 @@ function switch_draw_grid(el) {
    
     render.update_pipeline_diagram();
 }
-
 
 function switch_to_ui_editor(active_id) {
     data_pl = JSON.parse(json_content.value);
@@ -102,7 +101,7 @@ function add_block() {
 }
 
 function connect_blocks() {
-
+    render.start_connect_blocks();
 }
 
 
@@ -130,6 +129,8 @@ document.addEventListener("DOMContentLoaded", function() {
     if (_data_pl) {
         data_pl = JSON.parse(_data_pl);
     }
+    window.render = new RenderPipelineEditor('pipeline_diagram_canvas', 'canvas_container');
+
     resize_canvas();
     render.update_meansures();
     render.update_pipeline_diagram();
