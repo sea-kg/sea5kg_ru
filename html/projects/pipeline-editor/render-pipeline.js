@@ -19,6 +19,13 @@ class RenderPipelineEditor {
         this.conneсtingBlocks = {
             'state': 'nope',
         };
+        this.selectedBlock = {
+            'block-id-undermouse': null
+        };
+        
+
+        // this.editorState = 'moving' or 'connecting-blocks' or 'removing-blocks'
+
 
         this.canvas = document.getElementById(canvas_id);
         this.canvas_container = document.getElementById(canvas_container_id);
@@ -84,6 +91,11 @@ class RenderPipelineEditor {
             return;
         }
 
+        if (this.onchoosedelement) {
+            this.onchoosedelement(this.selectedBlock['block-id-undermouse'])
+        }
+        
+
         if (this.conneсtingBlocks.state == 'select-incoming') {
             console.log(this.conneсtingBlocks);
             if (this.conneсtingBlocks.incoming_block_id != null) {
@@ -125,6 +137,8 @@ class RenderPipelineEditor {
         var x0 = event.clientX - co.left;
         var y0 = event.clientY - co.top;
         var block_id = this.find_block_id(x0, y0);
+
+        this.selectedBlock['block-id-undermouse'] = block_id;
 
         if (this.conneсtingBlocks.state == 'select-incoming') {
             this.conneсtingBlocks.incoming_block_id = block_id;

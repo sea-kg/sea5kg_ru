@@ -106,8 +106,17 @@ body {
 }
 
 .pipeline-editor-table-cell.properties {
+    width: 180px;
+    max-width: 180px;
+}
+
+.pipeline-editor-table-cell.properties input {
     width: 150px;
     max-width: 150px;
+}
+
+.pipeline-editor-table-cell.properties input:read-only {
+    background-color: #AAA;
 }
 
 .pipeline-editor-functions-btn {

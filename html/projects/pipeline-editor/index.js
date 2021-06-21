@@ -124,6 +124,27 @@ function resize_canvas() {
     canvas_cont.style['height'] = new_height;
 }
 
+function input_onchangename() {
+    var block_id = document.getElementById("prop_block_id").value;
+    if (block_id) {
+        console.log(document.getElementById("prop_name").value);
+        data_pl[block_id]['name'] = document.getElementById("prop_name").value;
+        render.update_meansures();
+        render.update_pipeline_diagram();
+    }
+}
+
+function render_onchoosedelement(block_id) {
+    if (block_id) {
+        document.getElementById("prop_block_id").value = block_id;
+        document.getElementById("prop_name").value = data_pl[block_id]['name'];
+    } else {
+        document.getElementById("prop_block_id").value = "";
+        document.getElementById("prop_name").value = "";
+    }
+}
+
+
 document.addEventListener("DOMContentLoaded", function() {
     var _data_pl = localStorage.getItem('data_pl')
     if (_data_pl) {
@@ -134,6 +155,9 @@ document.addEventListener("DOMContentLoaded", function() {
     resize_canvas();
     render.update_meansures();
     render.update_pipeline_diagram();
+
+    document.getElementById("prop_name").addEventListener('keyup', input_onchangename);
+    render.onchoosedelement = render_onchoosedelement;
 });
 
 
