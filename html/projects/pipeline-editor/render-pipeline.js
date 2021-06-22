@@ -22,6 +22,7 @@ class RenderPipelineEditor {
         this.selectedBlock = {
             'block-id-undermouse': null
         };
+        this.selectedBlockIdEditing = null;
         
 
         // this.editorState = 'moving' or 'connecting-blocks' or 'removing-blocks'
@@ -31,6 +32,8 @@ class RenderPipelineEditor {
         this.canvas_container = document.getElementById(canvas_container_id);
 
         this.ctx = this.canvas.getContext("2d");
+        this.ctx.font = this.fontSize + "px Arial";
+        
         var self = this;
         this.canvas.onmouseover = function(event) {
             self.canvas_onmouseover(event);
@@ -94,7 +97,10 @@ class RenderPipelineEditor {
         if (this.onchoosedelement) {
             this.onchoosedelement(this.selectedBlock['block-id-undermouse'])
         }
-        
+        if (this.selectedBlockIdEditing != this.selectedBlock['block-id-undermouse']) {
+            this.selectedBlockIdEditing = this.selectedBlock['block-id-undermouse'];
+            this.update_pipeline_diagram();
+        }
 
         if (this.conneсtingBlocks.state == 'select-incoming') {
             console.log(this.conneсtingBlocks);
@@ -224,8 +230,8 @@ class RenderPipelineEditor {
 
     update_meansures() {
         var max_width = 0;
-        var pl_cell_max_x = 0;
-        var pl_cell_max_y = 0;
+        // var pl_cell_max_x = 0;
+        // var pl_cell_max_y = 0;
         for (var i in data_pl) {
             var tMeas = this.ctx.measureText(data_pl[i]['name']);
             max_width = Math.max(tMeas.width, max_width);
@@ -233,12 +239,15 @@ class RenderPipelineEditor {
             tMeas = this.ctx.measureText(data_pl[i]['description']);
             max_width = Math.max(tMeas.width, max_width);
             data_pl[i]['hidden_description_width'] = parseInt(tMeas.width);
-            pl_cell_max_x = Math.max(data_pl['cell_x'])
-            pl_cell_max_y = Math.max(data_pl['cell_y'])
+            // pl_cell_max_x = Math.max(data_pl['cell_x'])
+            // pl_cell_max_y = Math.max(data_pl['cell_y'])
         }
         this.pl_card_width = parseInt(max_width) + 20;
         this.pl_cell_width = this.pl_card_width + 20;
-        
+        console.log(data_pl)
+        console.log("this.pl_card_width = ", this.pl_card_width)
+        console.log("this.pl_cell_width = ", this.pl_cell_width)
+
         // this.pl_height = pl_cell_max_y * pl_cell_height;
         // this.pl_width = pl_cell_max_x * pl_cell_width;
     }
@@ -324,8 +333,12 @@ class RenderPipelineEditor {
             data_pl[i].hidden_x1 = x1;
             data_pl[i].hidden_y1 = y1;
 
-            // fill          
-            this.ctx.fillStyle = this.pl_highlightCard == i ? "#E6ECDF" : "white";
+            // fill
+            if (this.selectedBlockIdEditing == i) {
+                this.ctx.fillStyle = "red";
+            } else {
+                this.ctx.fillStyle = this.pl_highlightCard == i ? "#E6ECDF" : "white";
+            }
             this.ctx.fillRect(x1, y1, this.pl_card_width, this.pl_card_height);
             this.ctx.fillStyle = "black";
 

@@ -162,8 +162,8 @@ document.addEventListener("DOMContentLoaded", function() {
         data_pl = JSON.parse(_data_pl);
     }
     window.render = new RenderPipelineEditor('pipeline_diagram_canvas', 'canvas_container');
-
     resize_canvas();
+
     render.update_meansures();
     render.update_pipeline_diagram();
 
