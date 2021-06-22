@@ -48,16 +48,27 @@ function switch_draw_grid(el) {
     render.update_pipeline_diagram();
 }
 
-function switch_to_ui_editor(active_id) {
+function switch_to_tab_ui_editor(active_id) {
     data_pl = JSON.parse(json_content.value);
     render.update_meansures();
     render.update_pipeline_diagram();
 }
 
-function switch_to_json() {
+function switch_to_tab_json() {
     var _data_pl = export_to_json();
     json_content.value = JSON.stringify(_data_pl, undefined, 4);
 }
+
+function switch_to_tab_export() {
+    var _data_pl = export_to_json();
+    json_content.value = JSON.stringify(_data_pl, undefined, 4);
+}
+
+function switch_to_tab_settings() {
+    var _data_pl = export_to_json();
+    json_content.value = JSON.stringify(_data_pl, undefined, 4);
+}
+
 
 function save_as_image() {
     const dataUrl = pipeline_diagram_canvas.toDataURL("png");
