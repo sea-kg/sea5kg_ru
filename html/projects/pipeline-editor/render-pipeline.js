@@ -33,7 +33,7 @@ class RenderPipelineEditor {
 
         this.ctx = this.canvas.getContext("2d");
         this.ctx.font = this.fontSize + "px Arial";
-        
+
         var self = this;
         this.canvas.onmouseover = function(event) {
             self.canvas_onmouseover(event);
@@ -244,10 +244,6 @@ class RenderPipelineEditor {
         }
         this.pl_card_width = parseInt(max_width) + 20;
         this.pl_cell_width = this.pl_card_width + 20;
-        console.log(data_pl)
-        console.log("this.pl_card_width = ", this.pl_card_width)
-        console.log("this.pl_cell_width = ", this.pl_cell_width)
-
         // this.pl_height = pl_cell_max_y * pl_cell_height;
         // this.pl_width = pl_cell_max_x * pl_cell_width;
     }

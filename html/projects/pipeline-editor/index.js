@@ -140,6 +140,7 @@ function input_onchangename() {
     if (block_id) {
         console.log(document.getElementById("prop_name").value);
         data_pl[block_id]['name'] = document.getElementById("prop_name").value;
+        data_pl[block_id]['description'] = document.getElementById("prop_description").value;
         render.update_meansures();
         render.update_pipeline_diagram();
     }
@@ -149,9 +150,15 @@ function render_onchoosedelement(block_id) {
     if (block_id) {
         document.getElementById("prop_block_id").value = block_id;
         document.getElementById("prop_name").value = data_pl[block_id]['name'];
+        document.getElementById("prop_name").removeAttribute('readonly');
+        document.getElementById("prop_description").value = data_pl[block_id]['description'];
+        document.getElementById("prop_description").removeAttribute('readonly');
     } else {
         document.getElementById("prop_block_id").value = "";
         document.getElementById("prop_name").value = "";
+        document.getElementById("prop_name").setAttribute('readonly', true);
+        document.getElementById("prop_description").value = "";
+        document.getElementById("prop_description").setAttribute('readonly', true);
     }
 }
 
@@ -166,8 +173,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
     render.update_meansures();
     render.update_pipeline_diagram();
+    render_onchoosedelement(null)
 
     document.getElementById("prop_name").addEventListener('keyup', input_onchangename);
+    document.getElementById("prop_description").addEventListener('keyup', input_onchangename);
     render.onchoosedelement = render_onchoosedelement;
 });
 
