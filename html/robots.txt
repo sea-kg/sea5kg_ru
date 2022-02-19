@@ -5,5 +5,5 @@ Allow: /music
 Allow: /pictures
 Allow: /your-city-is-invaded-by-aliens
 # Disallow: /bin/
-# Sitemap: https://sea-kg.com.com/sitemap
+Sitemap: https://sea-kg.com/sitemap.xml
 # Clean-param: ref /some_dir/get_book.pl
