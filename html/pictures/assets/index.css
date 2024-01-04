@@ -49,6 +49,9 @@ body {
     padding-left: 10px;
     width: 160px;
     font-size: 12px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .sea5kg-picture-status {
