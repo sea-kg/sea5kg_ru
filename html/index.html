@@ -10,10 +10,10 @@
 
     <link href='css/index.css?ver=1' rel='stylesheet' type='text/css'/>
     <link href='css/bootstrap.css' rel='stylesheet' type='text/css'/>
-    <script type="text/javascript" src="js/jquery-3.5.0.slim.min.js"></script>
-    <script type="text/javascript" src="js/popper.min.js"></script>
-    <script type="text/javascript" src="js/tooltip.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./js/jquery-3.7.1.slim.min.js"></script>
+    <script type="text/javascript" src="./js/popper.min.js"></script>
+    <script type="text/javascript" src="./js/tooltip.min.js"></script>
+    <script type="text/javascript" src="./js/bootstrap.min.js"></script>
 
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
@@ -45,6 +45,39 @@
     <!-- /Yandex.Metrika counter -->
   </head>
   <body class="body">
+    <!-- MENU_BEGIN -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+      <a class="navbar-brand" href="./">sea5kg.ru</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="./">CV<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Projects
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="./sopovrobotics_v20170528_ForKeva.html">2017: SopovRobotics. Model v20170528 (ForKeva)</a>
+              <a class="dropdown-item" href="./sopovrobotics_v201703_Searcher.html">2017: SopovRobotics. Model v201703 (Infrared eye)</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="./projects/wcdatcha/">WC for country house (Рассчеты для дачного туалета)</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Git</a>
+          </li>
+          <!-- li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+          </li -->
+        </ul>
+      </div>
+    </nav>
+    <!-- MENU_END -->
     <div class="container">
       <br>
 
@@ -96,7 +129,7 @@
           <div class="card-text">
             <p>linux (Debian, Ubuntu, a little some CentOS)</p>
             <p>Mac OS</p>
-            <p>Windows XP, Windows 7 (Old Time Ago)</p>
+            <p>Windows XP, Windows 7, Windows 10 (Old Time Ago)</p>
           </div>
         </div>
       </div>
@@ -108,13 +141,14 @@
         <div class="card-body">
           <div class="card-text">
             <ul>
-              <li>git, mercurial, svn</li>
-              <li>python, c++, cmake</li>
+              <li>git, git-lfs, svn, mercurial</li>
+              <li>c++, python, cmake</li>
               <li>docker / docker-compose (for container services)</li>
               <li>QA: enable TravisCI for github projects (build / unit-tests / tests for API for project freehackquest.com / wsjcpp packages ) </li>
-              <li>Jenkins (QA: for building Android, frontend projects)</li>
+              <li>CI/CD: Jenkins (QA: for building Android, frontend projects), Teamcity (custom builds)</li>
               <li>GIMP, Inkscape, AdobeXD, Figma</li>
               <li>etc</li>
+              <li>Installers: InnoSetup, makeself, deb</li>
             </ul>
           </div>
         </div>
@@ -313,7 +347,7 @@
           <div class="card-text">
             <p>Orange Pi Based</p>
             <p>Ubuntu server (armbian)</p>
-            <p><a href="./projects/sopovrobotics_v20170528_ForKeva/">./projects/sopovrobotics_v20170528_ForKeva/</a></p>
+            <p><a href="./sopovrobotics_v20170528_ForKeva.html">./sopovrobotics_v20170528_ForKeva.html</a></p>
             Project SopovRobotics is just learning robotics technology like home made.
           </div>
           <hr>
@@ -321,7 +355,7 @@
           <div class="card-text">
             <p>Raspberry Pi v1 based</p>
             <p>Raspbian  (arm/debian)</p>
-            <p><a href="./projects/sopovrobotics_v201703_Searcher/">./projects/sopovrobotics_v201703_Searcher/</a></p>
+            <p><a href="./sopovrobotics_v201703_Searcher.html">./sopovrobotics_v201703_Searcher.html</a></p>
             Project SopovRobotics is just learning robotics technology like home made.
           </div>
           <hr>

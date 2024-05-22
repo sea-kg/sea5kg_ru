@@ -13,7 +13,7 @@
 
 				// name
 				document.getElementById("title").innerHTML = "Resume by " + xmlDoc.getElementsByTagName("name")[0].firstChild.nodeValue;
-				
+
 				// contacts
 				{
 					var x = xmlDoc.getElementsByTagName('contact');
@@ -22,7 +22,7 @@
 						document.getElementById("contacts").innerHTML += x[i].getAttribute('type') + ": " + x[i].getAttribute('value') + "<br/>";
 					}
 				}
-  
+
 				// skills
 				{
 					var x = xmlDoc.getElementsByTagName('skill');
@@ -31,7 +31,7 @@
 						document.getElementById("skills").innerHTML += "<li>" + x[i].getAttribute('value') + "</li>";
 					}
 				}
-				
+
 				// languages
 				{
 					var x = xmlDoc.getElementsByTagName('language');
@@ -40,7 +40,7 @@
 						document.getElementById("languages").innerHTML += "<li>" + x[i].getAttribute('name') + " - " + x[i].getAttribute('value') + "</li>";
 					}
 				}
-				
+
 				// educations
 				{
 					var x = xmlDoc.getElementsByTagName('education');
