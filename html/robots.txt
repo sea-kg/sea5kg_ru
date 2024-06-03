@@ -2,7 +2,6 @@ User-agent: *
 Allow: /
 Allow: /coins
 Allow: /music
-Allow: /pictures
 Allow: /your-city-is-invaded-by-aliens
 # Disallow: /bin/
 Sitemap: https://sea-kg.com/sitemap.xml
