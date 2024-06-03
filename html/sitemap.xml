@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> 
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://sea-kg.com/index.html</loc>
-        <lastmod>2021-07-31</lastmod>
+        <loc>https://sea5kg.ru/index.html</loc>
+        <lastmod>2024-06-03</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://sea5kg.ru/index.html</loc>
-        <lastmod>2021-07-31</lastmod>
+        <loc>https://sea5kg.ru/notes.html</loc>
+        <lastmod>2024-06-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://sea5kg.ru/sopovrobotics_v20170528_ForKeva.html</loc>
+        <lastmod>2024-06-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://sea5kg.ru/sopovrobotics_v201703_Searcher.html</loc>
+        <lastmod>2024-06-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://sea5kg.ru/pictures.html</loc>
+        <lastmod>2024-06-03</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
