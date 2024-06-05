@@ -17,6 +17,7 @@
 
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
+    if (window.location.hostname != "localhost") {
       (function (d, w, c) {
         (w[c] = w[c] || []).push(function() {
           try {
@@ -40,13 +41,14 @@
           d.addEventListener("DOMContentLoaded", f, false);
         } else { f(); }
       })(document, window, "yandex_metrika_callbacks");
+    }
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/32841695" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
   </head>
   <body class="body">
     <!-- MENU_BEGIN -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="menu_global">
       <a class="navbar-brand" href="./">sea5kg.ru</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -70,6 +72,14 @@
               <a class="dropdown-item" href="./sopovrobotics_v201703_Searcher.html">2017: SopovRobotics. Model v201703 (Infrared eye)</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="./projects/wcdatcha/">WC for country house (Рассчеты для дачного туалета)</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Lectures
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="./lecture_http_ssl_tools.html">http + ssl + tools (in progress)</a>
             </div>
           </li>
           <li class="nav-item">
