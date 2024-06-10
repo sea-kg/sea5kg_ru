@@ -2,49 +2,55 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://sea5kg.ru/index.html</loc>
-        <lastmod>2024-06-05</lastmod>
+        <lastmod>2024-06-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://sea5kg.ru/notes.html</loc>
-        <lastmod>2024-06-05</lastmod>
+        <lastmod>2024-06-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://sea5kg.ru/project_unigine_python_scripting.html</loc>
-        <lastmod>2024-06-05</lastmod>
+        <lastmod>2024-06-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://sea5kg.ru/sopovrobotics_v20170528_ForKeva.html</loc>
-        <lastmod>2024-06-05</lastmod>
+        <lastmod>2024-06-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://sea5kg.ru/sopovrobotics_v201703_Searcher.html</loc>
-        <lastmod>2024-06-05</lastmod>
+        <lastmod>2024-06-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://sea5kg.ru/project_arduino_temperature_with_lcd.html</loc>
+        <lastmod>2024-06-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://sea5kg.ru/lecture_http_ssl_tools.html</loc>
-        <lastmod>2024-06-05</lastmod>
+        <lastmod>2024-06-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://sea5kg.ru/pictures.html</loc>
-        <lastmod>2024-06-05</lastmod>
+        <lastmod>2024-06-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://sea5kg.ru/project_unigine_stone_generator.html</loc>
-        <lastmod>2024-06-05</lastmod>
+        <lastmod>2024-06-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
