@@ -78,7 +78,7 @@ Calculate and draw bezier curve.
 		<project name="BottleFS" langs="ava, bash, gradle, deb" technologies="Java, Http-server, lucene, tika, JSON" sources="https://github.com/sea-kg/BottleFS" video="http://www.youtube.com/watch?v=wNFbQL8h5GI">
 backend for file-storage (downloading by url)
 
-deb can you got from here: http://repo.sea-kg.com/bottlefs/
+deb can you got from here: https://sea5kg.ru/files/debs/bottlefs/
 
 Программа для организации полнотекстового поиска на базе lucene и tika.
 Запускается web-сервер и делаются GET-запросы.
@@ -225,7 +225,7 @@ simple chat on PHP
 Простой чат на php.
 		</project>
 		
-		<project name="wcdatcha" langs="JavaScript" technologies="Canvas" sources="http://sea-kg.com/projects/wcdatcha/index.html" video="">
+		<project name="wcdatcha" langs="JavaScript" technologies="Canvas" sources="https://sea5kg.ru/projects/wcdatcha/index.html" video="">
 program for calculating the outdoor toilets
 
 Программа для примерного расчета размеров дачного туалета.

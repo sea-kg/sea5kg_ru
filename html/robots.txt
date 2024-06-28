@@ -2,7 +2,6 @@ User-agent: *
 Allow: /
 Allow: /coins
 Allow: /music
-Allow: /your-city-is-invaded-by-aliens
 # Disallow: /bin/
-Sitemap: https://sea-kg.com/sitemap.xml
+Sitemap: https://sea5kg.ru/sitemap.xml
 # Clean-param: ref /some_dir/get_book.pl
