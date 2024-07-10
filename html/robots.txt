@@ -4,4 +4,5 @@ Allow: /coins
 Allow: /music
 # Disallow: /bin/
 Sitemap: https://sea5kg.ru/sitemap.xml
-# Clean-param: ref /some_dir/get_book.pl
+User-agent: Yandex
+Clean-param: utm
