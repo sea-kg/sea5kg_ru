@@ -132,8 +132,8 @@
         <div class="lecture-main-table">
           <div class="lecture-main-table-row">
             <div class="lecture-main-table-cell lecture-title-slide">
-              <h1>http + ssl + tools</h1>
-              <h3>Немного про всякое http</h3>
+              <h1>Git</h1>
+              <h3>Что мы знаем о данном инструменте?</h3>
             </div>
           </div>
         </div>
@@ -145,17 +145,8 @@
             <div class="lecture-main-table-cell">
               <h2>План</h2>
               <ul>
-                <li>Кратко о сетевых протоколах</li>
-                <li>О структуре сети</li>
-                <li>Об ip и доменных именах (DNS, DHCP)</li>
-                <li>traceroute, ping</li>
-                <li>nc, telnet, ssh, curl</li>
-                <li>http (+ GET POST PUT + json)</li>
-                <li>http in web-browser (firefox)</li>
-                <li>nginx (как настроить ssl с выводом запросов)</li>
-                <li>ssl (+ openssl)</li>
-                <li>https</li>
-                <li>Пишем на c-прокси запросов для middle-in-the-point</li>
+                <li>Кратко о git. что это такое...</li>
+                <li>Настройка гита</li>
               </ul>
             </div>
           </div>
@@ -166,16 +157,14 @@
         <div class="lecture-main-table">
           <div class="lecture-main-table-row">
             <div class="lecture-main-table-cell">
-              <h2>Кратко о сетевых протоколах</h2>
-              <h3>tcp/udp</h3>
-              <p>Весь известный нам интернет работает в основном на стеке протоколов: tcp/ip (ти-си-пи-ай-пи) и udp (у-ди-пи) и разных других например ICMP (ping)</p>
-              <p>Оба протокола это обмен (данными) по протоколу между двумя компьютерами подключенных к сети.</p>
-              <p>Для нас важно знать.</p>
-              <ul>
-                <li>tcp - с подтверждением доставки пакетов</li>
-                <li>udp - без фактического подтверждения доставки пакетов</li>
-              </ul>
-              <p>ip - это адрес машины в сети (бывает IPv4 -32 бита и IPv6 - 128 бит).</p>
+              <h2>Кратко о git. что это такое...</h2>
+              <h3>Это децентрализованная система контроля версий</h3>
+              <p>1. Контроль версий представляется так что в каждом ТЕКСТОВОМ файле мы можем посмотреть кто и что менял и когда.</p>
+              <p>2. Все именения выглядят как patch, то есть в каком файле в после каких строк надо добавить новые строки</p>
+              <p>3. Некоторое количество изменений то есть коммит (некая минимальная структурная единица информации определенная одним автором как логически завершенные изменения)</p>
+              <p>4. Мы можем пользоваться гитом локально а также менять/добавлять цдаленные хранилища</p>
+              <p>5. изменения в гите это коммиты которые представляют собой граф (позже поглядим на них)</p>
+              <p>Также есть отличная книга по гиту <a href="https://git-scm.com/book/ru/v2" target="_blank">https://git-scm.com/book/ru/v2</a></p>
             </div>
           </div>
         </div>
@@ -185,20 +174,11 @@
         <div class="lecture-main-table">
           <div class="lecture-main-table-row">
             <div class="lecture-main-table-cell">
-              <h2>Кратко о сетевых протоколах</h2>
-              <h3>ports</h3>
-              <p>В протоколах tcp/ip и udp есть абстракция "порт" бывает от 1-65535.</p>
-              <p>Используется на уровне ОС для понимания в какую программу надо передать данные, то есть некий идентификатор.</p>
-              <p>Как это работает:</p>
-              <p>1. Приложение говорит системе (сервер):</p>
-              <ul>
-                <li>хочу слушать на порту 1234 по протоколу TCP/IP - если все ок то система разрешает</li>
-              </ul>
-              <p>2. На другом компьютере приложение говорит системе (клиент):</p>
-              <ul>
-                <li>Хочу подключиться к 192.168.0.11 на порт 1234 по протоколу TCP/IP - если все ок то происходит попытка подключения</li>
-              </ul>
-              <p>Если все прошло успешно то они могут обмениваться данными уже по своему протоколу.</p>
+              <h2>Настройка гита. Установка.</h2>
+              <p>Вначале надо установить на систему git.</p>
+              <p>Под linux на базе дебиан (ubuntu): apt install git</p>
+              <p>Под windows: скачать с оффициального сайта</p>
+              <p>Под mac: раньше через brew можно было поставить на текущий момент я без понятия</p>
             </div>
           </div>
         </div>
@@ -208,114 +188,20 @@
         <div class="lecture-main-table">
           <div class="lecture-main-table-row">
             <div class="lecture-main-table-cell">
-              <h2>О структуре сети</h2>
-              <h3>Локальная сеть (простая домашняя сеть)</h3>
-              <img src="./img/lectures/http_ssl_tools/local_network.png">
-            </div>
-          </div>
-        </div>
-      </div>
+              <h2>Настройка гита. Настройка и генерация персонального ключа.</h2>
+              <p>Сгенерируем ключ (ДОПИСАТЬ)</p>
+              <p>в ~/.ssh/config можем прописать какой ключ и для какого сервера надо использовать (удобно для разделения рабочих ключей и личного).</p>
+              <pre>
+Host github.com
+  IdentityFile ~/.ssh/key1
 
-      <div class="lecture-slide">
-        <div class="lecture-main-table">
-          <div class="lecture-main-table-row">
-            <div class="lecture-main-table-cell">
-              <h2>Корпоративная сеть</h2>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="lecture-slide">
-        <div class="lecture-main-table">
-          <div class="lecture-main-table-row">
-            <div class="lecture-main-table-cell">
-              <h2>ssl как работает</h2>
-              <p>Картинка</p>
-              <p>О принципе работы ассиметричного шифрования. И понимания доверенности к pub ключу (crt)</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="lecture-slide">
-        <div class="lecture-main-table">
-          <div class="lecture-main-table-row">
-            <div class="lecture-main-table-cell">
-              <h2>ssl как работает</h2>
-              <p>Картинка</p>
-              <p>О принципе работы ассиметричного шифрования. И понимания доверенности к pub ключу (crt)</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="lecture-slide">
-        <div class="lecture-main-table">
-          <div class="lecture-main-table-row">
-            <div class="lecture-main-table-cell">
-              <h2>Инструменты</h2>
-              <p>nc / telnet</p>
-              <p>nginx (docker)</p>
-              <p>openssl</p>
-              <p>firefox</p>
-              <p>curl</p>
-              <p>python (requests)</p>
-              <p>ssl (c-туннел)</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="lecture-slide">
-        <div class="lecture-main-table">
-          <div class="lecture-main-table-row">
-            <div class="lecture-main-table-cell">
-              <h2>nc / telnet</h2>
-              <p>nc -l 3333 - запускаем сервер на порту 3333</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="lecture-slide">
-        <div class="lecture-main-table">
-          <div class="lecture-main-table-row">
-            <div class="lecture-main-table-cell">
-              <h2>netstat</h2>
-              <p>sudo netstat -tulpan | grep LISTEN</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="lecture-slide">
-        <div class="lecture-main-table">
-          <div class="lecture-main-table-row">
-            <div class="lecture-main-table-cell">
-              <h2>nginx как инструмент дебага</h2>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="lecture-slide">
-        <div class="lecture-main-table">
-          <div class="lecture-main-table-row">
-            <div class="lecture-main-table-cell">
-              <h2>nginx как прокси сервер</h2>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="lecture-slide">
-        <div class="lecture-main-table">
-          <div class="lecture-main-table-row">
-            <div class="lecture-main-table-cell">
-              <h2>openssl клиент - можно подключаться к ssl каналам (+ сервер)</h2>
-              <p>Можно попробовать подключиться вот так вот на ssl сокет</p>
-              <pre>openssl s_client -connect %hostname%:%port%</pre>
+Host bitbucket.org
+  IdentityFile ~/.ssh/key2
+              </pre>
+              <p>~/.ssh/key1 - будет использоваться для работы с github.com</p>
+              <p>~/.ssh/key2 - будет использоваться для работы с bitbucket.org</p>
+              <p>Кроме IdentityFile можно всякого там настроить напрмиер User а остальное лучше погуглить</p>
+              <p>Также в этом файле можно настраивать ключи для доступа к сервера по ssh (чтобы также можно было использовать разные ключи к разным серверам)</p>
             </div>
           </div>
         </div>
