@@ -188,6 +188,23 @@
         <div class="lecture-main-table">
           <div class="lecture-main-table-row">
             <div class="lecture-main-table-cell">
+              <h2>Настройка гита. Авторизация.</h2>
+              <p>Есть два типа авторизации в гите (мне известно только о них):</p>
+              <ul>
+                <li>Через basic auth то есть типа <pre>git clone http://user:pass@site.com/repos/repo1 repo1_via_basicauth.git</pre></li>
+                <li>или через ssh-ключ <pre>git clone git@site.com:repos/repo1 repo1_via_ssh.git</pre> (но ключ надо предварительно настроить см далее)</li>
+              </ul>
+              <p>repo1_via_basicauth.git - директория в куда сколонировать репозиторий</p>
+              <p>repo1_via_ssh.git - диреткория в куда сколонировать репозиторий</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lecture-slide">
+        <div class="lecture-main-table">
+          <div class="lecture-main-table-row">
+            <div class="lecture-main-table-cell">
               <h2>Настройка гита. Настройка и генерация персонального ключа.</h2>
               <p>Сгенерируем ключ (ДОПИСАТЬ)</p>
               <p>в ~/.ssh/config можем прописать какой ключ и для какого сервера надо использовать (удобно для разделения рабочих ключей и личного).</p>
